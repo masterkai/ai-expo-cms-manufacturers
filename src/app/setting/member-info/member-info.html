@@ -1,0 +1,92 @@
+@if(loading()){
+    <p-progressBar mode="indeterminate" class="progressBar" [style]="{'height': '3px','border-radius':'0px'}" color="#F49C02"/>
+}
+
+<form [formGroup]="myForm" (ngSubmit)="!loading() && check()">
+    <h2>會員資訊</h2>
+    <p-divider/>
+    <ng-container formGroupName="member_information">
+        <div class="mb-3">
+            <label class="form-label">姓名</label>
+            <div class="d-flex align-items-center">
+                <input type="text" class="my-input" formControlName="name">
+                <span class="gender">
+                    @if(!loading()){
+                        @if(gender?.value === 'M'){先生}@else{小姐}
+                    }
+                </span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">電話</label>
+            <div class="d-flex align-items-center" formGroupName="telephone">
+                <input type="text" class="my-input nation-code"  inputmode="numeric" [maxlength]="4" placeholder="國碼" formControlName="nation_code">
+                <input type="text" class="my-input area-code ms-3" inputmode="numeric" [maxlength]="6" placeholder="區碼" formControlName="area_code">
+                <input type="text" class="my-input telephone-number ms-3" inputmode="numeric" [maxlength]="30" placeholder="號碼" formControlName="telephone_number">
+                <input type="text" class="my-input extension-number ms-3" inputmode="numeric" [maxlength]="20" placeholder="分機" formControlName="extension_number">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">手機</label>
+            <div class="d-flex align-items-center" formGroupName="mobile_phone">
+                <input type="text" class="my-input nation-code"  inputmode="numeric" [maxlength]="4" placeholder="國碼" formControlName="nation_code">
+                <input type="text" class="my-input ms-3" inputmode="numeric" [maxlength]="14" placeholder="號碼" formControlName="mobile_number">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">信箱 (登入帳號)</label>
+            <div class="d-flex align-items-center">
+                <div class="disabled-input my-input">{{member_email?.value}}</div>
+                <button type="button" matButton="filled" class="update-pwd-btn" (click)="updatePassword()">更新密碼</button>
+            </div>
+        </div>
+    </ng-container>
+
+    <div class="mb-3">
+        <label class="form-label">驗證方式</label>
+        <mat-radio-group class="radio" color="primary" formControlName="verification_method" >
+            <mat-radio-button [value]="0">手機號碼</mat-radio-button>
+            <mat-radio-button [value]="1">Email</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <h2 class="mt-4">聯絡人資訊</h2>
+    <p-divider/>
+    <ng-container formGroupName="contact_information">
+        <div class="mb-3">
+            <label class="form-label">姓名</label>
+            <div class="d-flex align-items-center">
+                <input type="text" class="my-input" formControlName="name">
+                <span class="gender">
+                    @if(!loading()){
+                        @if(gender?.value === 'M'){先生}@else{小姐}
+                    }
+                </span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">電話</label>
+            <div class="d-flex align-items-center" formGroupName="telephone">
+                <input type="text" class="my-input nation-code"  inputmode="numeric" [maxlength]="4" placeholder="國碼" formControlName="nation_code">
+                <input type="text" class="my-input area-code ms-3" inputmode="numeric" [maxlength]="6" placeholder="區碼" formControlName="area_code">
+                <input type="text" class="my-input telephone-number ms-3" inputmode="numeric" [maxlength]="30" placeholder="號碼" formControlName="telephone_number">
+                <input type="text" class="my-input extension-number ms-3" inputmode="numeric" [maxlength]="20" placeholder="分機" formControlName="extension_number">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">手機</label>
+            <div class="d-flex align-items-center" formGroupName="mobile_phone">
+                <input type="text" class="my-input nation-code" inputmode="numeric" [maxlength]="4" placeholder="國碼" formControlName="nation_code">
+                <input type="text" class="my-input ms-3" inputmode="numeric" [maxlength]="14" placeholder="號碼" formControlName="mobile_number">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">信箱</label>
+                <input type="email" class="my-input" formControlName="email">
+        </div>
+        <div class="mt-4" align="center">
+            <p-button type="submit" label="儲存" styleClass="submit-btn" [loading]="submitLoading()" />
+        </div>
+    </ng-container>
+    
+</form>

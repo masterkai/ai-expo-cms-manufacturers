@@ -1,0 +1,48 @@
+<div class="myConfirm"><!--因為ts有用到encapsulation: ViewEncapsulation.None，避免這裡的css變成全域後影響其他，所以特別加一個class包起來成唯一-->
+
+    <div class="wrapper">
+        <svg>
+            <use [attr.xlink:href]="'#comfirm-'+data.icon"></use>
+        </svg>
+        <div class="msg">
+            <div [innerHtml]="data.title" class="title"></div>
+            <div [innerHtml]="data.subTitle" class="sub-title"></div>
+        </div>
+    </div>
+
+
+    @if (data.type == 'comfirm') {
+        <div class="button-frame" align="center">
+            <button mat-stroked-button class="cancel-btn" (click)="cancel()">{{ data.cancelBtnText }}</button>
+            <button mat-flat-button color="primary" (click)="sure()">{{ data.submitBtnText }}</button>
+        </div>
+    }
+
+    @if (data.type == 'alert') {
+        <div class="button-frame" align="center">
+            <button mat-button (click)="sure()">確定</button>
+            <!--tabindex="-1" 防止自動focus-->
+        </div>
+    }
+</div>
+
+<svg height="0" style="display:none" width="0">
+    <symbol id="comfirm-check" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 .08C14.399.08.08 14.399.08 32S14.399 63.92 32 63.92 63.92 49.601 63.92 32 49.601.08 32 .08zm0 58.52C17.333 58.6 5.4 46.667 5.4 32S17.333 5.4 32 5.4 58.6 17.333 58.6 32 46.667 58.6 32 58.6z"
+              data-original="#000000"
+              fill="#47a141" xmlns="http://www.w3.org/2000/svg"></path>
+        <path d="M41.926 22.318L30.49 36.039l-5.92-5.92a2.66 2.66 0 10-3.762 3.762l7.98 7.98c.501.5 1.178.779 1.882.779.04 0 .081 0 .121-.003a2.659 2.659 0 001.923-.955l13.3-15.96a2.661 2.661 0 00-4.088-3.404z"
+              data-original="#000000"
+              fill="#47a141" xmlns="http://www.w3.org/2000/svg"></path>
+    </symbol>
+    <symbol id="comfirm-alert" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path
+                d="M256 0C114.497 0 0 114.507 0 256c0 141.503 114.507 256 256 256 141.503 0 256-114.507 256-256C512 114.497 397.493 0 256 0zm0 472c-119.393 0-216-96.615-216-216 0-119.393 96.615-216 216-216 119.393 0 216 96.615 216 216 0 119.393-96.615 216-216 216z"
+                data-original="#000000" fill="#f49c00" xmlns="http://www.w3.org/2000/svg"></path>
+        <path
+                d="M256 128.877c-11.046 0-20 8.954-20 20V277.67c0 11.046 8.954 20 20 20s20-8.954 20-20V148.877c0-11.046-8.954-20-20-20z"
+                data-original="#000000" fill="#f49c00" xmlns="http://www.w3.org/2000/svg"></path>
+        <circle cx="256" cy="349.16" data-original="#000000" fill="#f49c00" r="27" xmlns="http://www.w3.org/2000/svg">
+        </circle>
+    </symbol>
+</svg>

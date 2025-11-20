@@ -1,0 +1,7 @@
+{
+    "/webservice": {
+      "target": "https://webapp.digitimes.com.tw:8080",
+      "secure": false,
+      "changeOrigin": true
+    }
+}

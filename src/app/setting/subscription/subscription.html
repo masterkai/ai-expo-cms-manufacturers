@@ -1,0 +1,25 @@
+<div class="container">
+    <p-divider/>
+    <div class="subscription-content">
+        <h2>目前方案：{{ subscriptionPlan() }}方案</h2>
+        <p class="text-xl">訂閱狀態：{{ subscriptionStatus() }}季</p>
+        <p>訂閱期間：{{ expirationDate() }}</p>
+        <div class="flex items-center">
+            <p-checkbox [(ngModel)]="pizza" inputId="ingredient1" name="pizza" value="Cheese"/>
+            <label class="ml-2" for="ingredient1">自動續訂(請呈現是哪種平台訂購Web/ iOS/Android)</label>
+        </div>
+    </div>
+    <p-divider/>
+    <div>
+        <p>訂閱方案將在到期後自動更新並扣款。除非你取消訂閱，否則系統將在每個帳單週期 (根據你的訂閱條款，例如每週、每年或其他訂閱週期)
+            開始時向你收費。您可在修改基本資料隨時取消訂閱，取消條款：</p>
+        <p>您可以隨時取消訂閱。如果您在到期前的 10 個工作天取消，而您的服務將繼續直到該月的計費期間結束為止。</p>
+        <p-divider/>
+        <h3>iOS取消說明</h3>
+        <p>於設定選取Apple ID、iCloud 、媒體購買項目à選擇訂閱項目à取消購買</p>
+        <h3>Android 取消說明</h3>
+        <p>登入APPà點選右上 “人形圖示”à選擇修改基本資料à即可取消自動續約</p>
+    </div>
+    <p-divider/>
+    <p-image [src]="adSource()" alt="Image" width="100%"/>
+</div>

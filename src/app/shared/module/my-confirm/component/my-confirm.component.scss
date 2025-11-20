@@ -1,0 +1,67 @@
+.myConfirm {
+	padding: 25px 25px 20px 25px;
+	
+	.wrapper {
+		display: flex;
+		align-items: flex-start;
+		
+		svg {
+			width: 40px;
+			height: 40px;
+			flex-shrink: 0;
+		}
+		
+		.msg {
+			margin-left: 15px;
+			
+			.title {
+				font-size: 18px;
+				font-weight: 500;
+				color: #333333;
+				text-align: center;
+				line-height: 1.8;
+				margin-top: 4px;
+			}
+		}
+	}
+	
+	.sub-title {
+		margin-top: 16px;
+		font-size: 15px;
+		text-align: left;
+		color: #5a5a5a;
+		
+		.warn {
+			color: #F44336;
+		}
+		
+		.highlight {
+			color: #0073f4;
+		}
+	}
+	
+	.button-frame {
+		margin-top: 20px;
+		
+		button {
+			font-size: 14px;
+			font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+			font-weight: 400;
+			
+			&:not(:only-child):last-child {
+				margin-left: 10px;
+			}
+		}
+		
+		.cancel-btn {
+			//--mdc-outlined-button-outline-color:var(--main-color);
+			// background-color: #ffffff;
+			// --mat-text-button-state-layer-color: rgba(244, 156, 0);
+			// --mat-text-button-ripple-color: rgba(244, 156, 0, 0.1);
+		}
+		
+		.sure-btn {
+			background-color: rgba(0, 0, 0, 0.06);
+		}
+	}
+}

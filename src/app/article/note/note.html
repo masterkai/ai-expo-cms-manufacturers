@@ -1,0 +1,10 @@
+<button class="close-btn" mat-icon-button mat-dialog-close>
+    <svg><use xlink:href="#close-icon"></use></svg>
+</button>
+<h2 mat-dialog-title>我的筆記</h2>
+<mat-dialog-content class="dialog-content">
+    <textarea class="my-input" placeholder="輸入筆記內容..." [(ngModel)]="noteContent"></textarea>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-flat-button color="primary" (click)="save()">儲存</button>
+</mat-dialog-actions>

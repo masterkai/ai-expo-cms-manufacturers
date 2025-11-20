@@ -1,0 +1,17 @@
+<header>
+    <div class="container">
+            <a class="logo" [routerLink]="['/']">
+                <svg><use xlink:href="#digitimes-logo"></use></svg>
+            </a>
+			
+            <button type="button" class="menu-btn" [matMenuTriggerFor]="menu" matIconButton><svg><use xlink:href="#menu-icon"></use></svg></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/my','info']">基本資料</button>
+                <button mat-menu-item [routerLink]="['/my','subscription']">訂閱資訊</button>
+                <button mat-menu-item [routerLink]="['/my','keep']">我的最愛</button>
+                <button mat-menu-item [routerLink]="['/my','policy']">訂購須知</button>
+                <div class="divider"></div>
+                <button mat-menu-item>登出</button>
+            </mat-menu>
+    </div>
+</header>

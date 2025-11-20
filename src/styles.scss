@@ -1,0 +1,549 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use "_mediaWidth" as *;
+//@import "primeicons/primeicons.css";
+
+
+:root {
+	--primary-color: #F49C02;
+	--color: #303237;
+	--background-color: #fafcff;
+	--header-height: 60px;
+	--border-radius: 8px;
+	--nav-width: 220px;
+	--box-shadow: rgba(0, 0, 0, .08) 0px 4px 12px;
+	--image-box-shadow: rgba(0, 0, 0, .08) 0px 4px 12px;
+}
+
+
+$black-87-opacity: rgba(0, 0, 0, 0.87);
+$white-100-opacity: rgba(255, 255, 255, 1);
+
+$my-palette: (
+	50: #FFF3E0,
+	100: #FFE0B2,
+	200: #FFCC80,
+	300: #FFB74D,
+	400: #FFA726,
+	500: #F49C02,
+	600: #FB8C00,
+	700: #F57C00,
+	800: #EF6C00,
+	900: #F57C00,
+	A100:#FFD180,
+	A200:#FFAB40,
+	A400:#FF9100,
+	A700:#FF6D00,
+	contrast: (50 : $black-87-opacity,
+		100: $black-87-opacity,
+		200: $black-87-opacity,
+		300: $black-87-opacity,
+		400: $black-87-opacity,
+		500: $white-100-opacity,
+		600: $white-100-opacity,
+		700: $white-100-opacity,
+		800: $white-100-opacity,
+		900: $white-100-opacity,
+		A100: $black-87-opacity,
+		A200: $white-100-opacity,
+		A400: $white-100-opacity,
+		A700: $white-100-opacity,
+	)
+);
+
+$my-primary: mat.m2-define-palette($my-palette, 500);
+$my-accent: mat.m2-define-palette(mat.$m2-pink-palette);
+
+$my-theme: mat.m2-define-light-theme((color: (primary: $my-primary,
+	accent: $my-accent,
+),
+	typography: mat.m2-define-typography-config($font-family: '"微軟正黑體" ,sans-serif',
+	),
+	density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	font-family: '微軟正黑體', sans-serif;
+	color: var(--color);
+	font-weight: 400;
+	background-color: var(--background-color);
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	outline: none;
+	font-family: '微軟正黑體', sans-serif;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.skeleton-cover {
+	position: absolute !important;
+	height: 100% !important;
+}
+
+.my-input {
+	display: block;
+	width: 100%;
+	padding-left: 10px;
+	height: 38px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	border: 1px solid #ced4da;
+	background-color: #ffffff;
+	appearance: none;
+	outline: none;
+	border-radius: var(--border-radius);
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	&:focus {
+		border-color: var(--primary-color);
+	}
+	&:disabled{
+		background-color: #e9ecef;
+	}
+	
+	&.datetime {
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><path fill="%23d0d2d4" d="M448 64h-21.332V21.332C426.668 9.559 417.109 0 405.332 0H384c-11.777 0-21.332 9.559-21.332 21.332V64H149.332V21.332C149.332 9.559 139.777 0 128 0h-21.332C94.891 0 85.332 9.559 85.332 21.332V64H64C28.715 64 0 92.715 0 128v320c0 35.285 28.715 64 64 64h384c35.285 0 64-28.715 64-64V128c0-35.285-28.715-64-64-64zm21.332 384c0 11.754-9.578 21.332-21.332 21.332H64c-11.754 0-21.332-9.578-21.332-21.332V214.187h426.664zm0 0" data-original="%23000000"/></svg>');
+		background-repeat: no-repeat;
+		background-size: 16px;
+		background-position: 10px center;
+		padding-left: 36px;
+		min-width: 140px;
+		box-shadow: none;
+	}
+	
+	&.mat-select {
+		display: flex;
+		align-items: center;
+		padding-left: 0px; //如果用padding-left，menu也會被往右推，寫在.mat-mdc-select-value-text
+		.mat-mdc-select-trigger {
+			height: 100%;
+			padding-right: 20px;
+		}
+		
+		.mat-mdc-select-value {
+			text-overflow: clip;
+		}
+		
+		.mat-mdc-select-value-text {
+			font-family: '微軟正黑體', sans-serif;
+			padding-left: 35px;
+			display: block;
+		}
+		
+		.mat-mdc-select-arrow {
+			margin-left: 5px;
+			transform: none; //v20會翻轉
+			&::after {
+				content: '';
+				display: block;
+				width: 14px;
+				height: 14px;
+				margin-top: -4px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 128 128"><path fill="%236a6a6a" d="M64 98.8a5.783 5.783 0 0 1-4.1-1.7l-58-58c-2.267-2.266-2.267-5.936 0-8.2s5.936-2.267 8.2 0L64 84.798l53.9-53.9c2.266-2.266 5.936-2.266 8.2 0s2.267 5.937 0 8.202l-58 58a5.783 5.783 0 0 1-4.1 1.7z" data-original="%23000000"/></svg>');
+			}
+			
+			svg {
+				display: none;
+			}
+		}
+	}
+}
+
+.p-button{
+	border-radius: var(--border-radius) !important;
+}
+
+.mdc-button {
+	--mdc-text-button-container-shape: var(--border-radius); //border-radius
+	--mat-button-filled-container-shape: var(--border-radius); //border-radius flat-button
+	--mdc-protected-button-container-shape: var(--border-radius); //rased-button radius
+	--mat-button-outlined-container-shape: var(--border-radius); //storked
+	--mat-filled-button-horizontal-padding: 16px;
+	--mat-text-button-horizontal-padding: 16px;
+	
+	.mat-mdc-button-persistent-ripple::before {
+		transition: opacity 400ms;
+	}
+	
+	.mat-mdc-button-touch-target {
+		height: inherit !important;
+		width: inherit !important;
+	}
+	
+	.mdc-button__label {
+		display: flex;
+		align-items: center;
+		text-align: left;
+	}
+	
+	&.mat-mdc-button-disabled {
+		svg {
+			fill: rgba(0, 0, 0, 0.28) !important;
+		}
+	}
+	
+	&.ripple-white {
+		--mat-text-button-state-layer-color: #fff;
+		--mat-button-text-ripple-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+//icon button
+.mat-mdc-icon-button.mdc-icon-button {
+	//這樣寫display才不用!important
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	
+	//--mat-mdc-button-persistent-ripple-color: transparent;
+	// --mdc-icon-button-disabled-icon-color: #fff;
+	.mat-mdc-button-persistent-ripple::before {
+		transition: opacity 400ms; //hover動畫
+	}
+	
+	.mat-mdc-button-touch-target {
+		height: inherit !important;
+		width: inherit !important;
+	}
+	
+	&.ripple-white {
+		--mat-icon-button-state-layer-color: #fff;
+		--mat-icon-button-ripple-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+//mat-menu
+.mat-mdc-menu-panel {
+	max-width: 310px !important;
+	max-height: 265px;
+	padding: 0px 8px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+	--mat-menu-container-shape: var(--border-radius);
+	--mat-menu-item-label-text-size: 14px;
+	@media all and (-webkit-min-device-pixel-ratio: 0) {
+		/* width */
+		&::-webkit-scrollbar {
+			width: 11px;
+		}
+		/* Track */
+		&::-webkit-scrollbar-track {
+			border-radius: 15px;
+		}
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: #e0e0e0;
+			border-radius: 15px;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: #c8c8c8;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+	}
+	@-moz-document url-prefix() {
+		/*Firefox*/
+		scrollbar-color: #c8c8c8 transparent;
+		scrollbar-width: thin;
+	}
+	
+	.mat-mdc-menu-item {
+		border-radius: 6px;
+		min-height: 36px;
+		transition: background 400ms;
+		
+		.mat-mdc-menu-item-text {
+			display: flex;
+			align-items: center;
+			line-height: 14px;
+		}
+		
+		svg {
+			width: 14px;
+			height: 14px;
+			margin-right: 15px;
+			stroke: #333333;
+			fill: #333333;
+			flex-shrink: 0;
+		}
+	}
+	
+	.divider {
+		border-bottom: 1px solid #d1d9e0b3;
+		margin: 5px 0;
+	}
+}
+
+//mat-selet的menu、paginator選頁的menu
+.mat-mdc-select-panel {
+	--mat-full-pseudo-checkbox-selected-icon-color: var(--main-color);
+	--mat-option-selected-state-label-text-color: var(--mat-option-label-text-color);
+	--mat-option-hover-state-layer-color: #F4F6F9;
+	--mat-option-focus-state-layer-color: transparent;
+	--mat-select-container-elevation-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	border-radius: var(--border-radius) !important;
+	padding: 8px !important;
+	margin-bottom: 6px;
+	margin-top: 6px;
+	
+	.mat-mdc-option {
+		min-height: 36px;
+		border-radius: 6px;
+		padding-left: 10px;
+		margin: 2px 0px;
+		transition: background 300ms ease-in-out;
+		
+		&.mdc-list-item--selected {
+			background-color: #F0F2F5 !important;
+		}
+		
+		&.mat-mdc-option-active.mdc-list-item:not(.mdc-list-item--selected):hover {
+			background-color: var(--mat-option-hover-state-layer-color);
+		}
+		
+		.mdc-list-item__primary-text {
+			font-size: 14px;
+		}
+		
+		//隱藏checkbox
+		.mat-pseudo-checkbox {
+			display: none;
+		}
+	}
+	
+	// 模擬 option groups，使分類名稱也可以做為選項
+	&.my-group-select {
+		.child-option {
+			padding-left: 30px;
+		}
+	}
+	
+	@media all and (-webkit-min-device-pixel-ratio: 0) {
+		/* width */
+		&::-webkit-scrollbar {
+			width: 11px;
+		}
+		/* Track */
+		&::-webkit-scrollbar-track {
+			border-radius: 15px;
+		}
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: #e0e0e0;
+			border-radius: 15px;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: #c8c8c8;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+	}
+	@-moz-document url-prefix() {
+		/*Firefox*/
+		scrollbar-color: #c8c8c8 transparent;
+		scrollbar-width: thin;
+	}
+}
+
+.mdc-snackbar {
+	.mdc-snackbar__surface {
+		--mat-snack-bar-container-shape: var(--border-radius); //圓角
+		//--mdc-snackbar-container-color:rgba(255, 255, 255, 1);//背景
+		box-shadow: 0 2px 6px rgba(0, 0, 0, .1) !important;
+		margin-bottom: 15px;
+		
+		button {
+			--mdc-text-button-container-shape: 6px;
+			
+			.mdc-button__label {
+				font-weight: 600;
+			}
+		}
+	}
+	
+	.mdc-snackbar__label {
+		display: flex;
+		align-items: center;
+		
+		&::before {
+			content: '';
+			display: none;
+			width: 16px;
+			height: 16px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			margin-right: 10px;
+			margin-top: 1px;
+		}
+	}
+	
+	&.success .mdc-snackbar__label::before {
+		display: block;
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><circle cx="256" cy="256" r="256" fill="%232AD352" opacity="1" data-original="%2374DA7F" class=""></circle><path fill="%23ffffff" d="M384.9 159.33a37.9 37.9 0 0 0-53.61 0L218.35 272.26l-37.64-37.64a37.9 37.9 0 0 0-53.61 0 37.9 37.9 0 0 0 0 53.6l64.45 64.45a37.9 37.9 0 0 0 53.61 0L384.9 212.93a37.9 37.9 0 0 0 0-53.6z" opacity="1" data-original="%23ffffff" class=""></path></g></g></svg>');
+	}
+	
+	&.warn .mdc-snackbar__label::before {
+		display: block;
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 64 64"><path fill="%23FFC107" d="M63.96994676 32.03198455c0 10.304-5.104 20.16-13.504 26.112-11.936 8.464-28.608 7.584-39.6-2.064s-14.048-26.048-7.2-38.976c6.816-12.912 21.952-19.664 36.112-16.112 14.064 3.52 24.192 16.56 24.192 31.04z" data-original="%23f9bf2c"/><path fill="%23fff" d="M37.13794676 17.64798455c.64 2.24-.192 4.912-.528 7.12-.72 4.704-1.376 9.28-1.488 14.048h-6.224c-.352-5.952-1.248-11.776-2.144-17.68-.56-2.528.224-5.424 2.544-6.784.496-.288 1.04-.512 1.6-.624 2.752-.592 5.504 1.28 6.24 3.92zm-5.1824 24.368c5.184.016 5.824 7.696.64 8.384-5.9216.784-6.5936-8.368-.64-8.384z" data-original="%23ffffff"/></svg>');
+	}
+	
+	&.error .mdc-snackbar__label::before {
+		display: block;
+		background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 60 60"><g transform="matrix(1.03 0 0 1.03 -.9 -.9)"><circle cx="30" cy="30" r="29" fill="%23f74850" data-original="%23f74850"/><path fill="%23fff" d="m34.218 30 7.373 7.373a1.4 1.4 0 0 1 0 1.976l-2.242 2.242a1.4 1.4 0 0 1-1.976 0L30 34.218l-7.373 7.373a1.4 1.4 0 0 1-1.976 0l-2.242-2.242a1.4 1.4 0 0 1 0-1.976L25.782 30l-7.373-7.373a1.4 1.4 0 0 1 0-1.976l2.242-2.242a1.4 1.4 0 0 1 1.976 0L30 25.782l7.373-7.373a1.4 1.4 0 0 1 1.976 0l2.242 2.242a1.4 1.4 0 0 1 0 1.976z" data-original="%23ffffff"/></g></svg>');
+	}
+}
+
+.mat-mdc-dialog-container {
+	--mdc-dialog-supporting-text-color: rgba(0, 0, 0, 0.87);
+	--mdc-dialog-subhead-weight: 500;
+	
+	.mdc-dialog__surface {
+		border-radius: 15px !important;
+		overflow-y: visible !important;
+	}
+	
+	.mdc-dialog__title {
+		font-weight: 500 !important;
+		
+		svg {
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+			transform: translateY(3px);
+			opacity: 0.8;
+		}
+		
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 20px;
+			left: -2px;
+			width: 3px;
+			height: 24px;
+			background-color: var(--primary-color);
+			filter: drop-shadow(0px 2px 5px rgba(244, 156, 2, 0.7));
+			border-radius: 10px;
+		}
+	}
+	
+	.mdc-dialog__content {
+		max-height: calc(100vh - 56px - 65px);
+		@media all and (-webkit-min-device-pixel-ratio: 0) {
+			/* width */
+			&::-webkit-scrollbar {
+				width: 11px;
+			}
+			/* Track */
+			&::-webkit-scrollbar-track {
+				border-radius: 15px;
+			}
+			/* Handle */
+			&::-webkit-scrollbar-thumb {
+				background: #e0e0e0;
+				border-radius: 15px;
+				border: 3px solid rgba(255, 255, 255, 0);
+				background-clip: padding-box;
+			}
+			/* Handle on hover */
+			&::-webkit-scrollbar-thumb:hover {
+				background: #c8c8c8;
+				border: 3px solid rgba(255, 255, 255, 0);
+				background-clip: padding-box;
+			}
+		}
+		@-moz-document url-prefix() {
+			/*Firefox*/
+			scrollbar-color: #c8c8c8 transparent;
+			scrollbar-width: thin;
+		}
+	}
+	
+	.mdc-dialog__actions {
+		padding: 14px 24px !important;
+	}
+	
+	.close-btn {
+		position: absolute;
+		right: 12px;
+		top: 8px;
+		min-width: 32px;
+		width: 32px;
+		height: 32px;
+		z-index: 1;
+		
+		svg {
+			min-width: 14px;
+			width: 14px;
+			height: 14px;
+		}
+	}
+}
+
+.my-scrollbar {
+	@media all and (-webkit-min-device-pixel-ratio: 0) {
+		/* width */
+		&::-webkit-scrollbar {
+			width: 11px;
+		}
+		/* Track */
+		&::-webkit-scrollbar-track {
+			border-radius: 15px;
+		}
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: #e0e0e0;
+			border-radius: 15px;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: #c8c8c8;
+			border: 3px solid rgba(255, 255, 255, 0);
+			background-clip: padding-box;
+		}
+	}
+	@-moz-document url-prefix() {
+		/*Firefox*/
+		scrollbar-color: #c8c8c8 transparent;
+		scrollbar-width: thin;
+	}
+}
+
+//隱藏右下方的captcha-badge
+.grecaptcha-badge { 
+    visibility: hidden !important;
+}

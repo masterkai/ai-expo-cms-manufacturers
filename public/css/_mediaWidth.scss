@@ -1,0 +1,213 @@
+$superlarge_width:1500px;
+$extralarge_width:1200px;
+$large_width:992px;
+$medium_width:768px;
+$small_width:576px;
+$edge:1px;
+
+
+@mixin superlarge() {
+  	@media screen and (min-width: $superlarge_width) {
+            @content;
+ 	 }
+}
+
+@mixin extralarge() {
+  	@media screen and (min-width:$extralarge_width)  {
+            @content;
+ 	 }
+}
+
+@mixin large() {
+  	@media screen and (min-width:$large_width)  {
+            @content;
+ 	 }
+}
+
+@mixin medium() {
+  	@media screen and (min-width:$medium_width) {
+            @content;
+ 	}
+}
+
+@mixin small() {
+	@media screen and (min-width:$small_width) {
+		  @content;
+   }
+}
+
+/*手機版*/
+@mixin mobile() {
+   	@media screen and (min-width: 0px) {
+            @content;
+   	}
+}
+
+/*非手機版*/
+@mixin desktop() {
+  	@media screen and (min-width: $medium_width) {
+            @content;
+ 	 }
+}
+
+/*中間混合*/
+@mixin rwd($from,$to) {
+    
+    //宣告變數
+	$from_width:$medium_width !default;
+	$to_width:$superlarge_width !default;
+
+	@if $from =='lg'
+	{
+		$from_width:$large_width;
+	}
+	@else if $from =='md'
+	{
+		$from_width:$medium_width;
+	}
+	@else
+	{
+		@if type-of($from)=='number'
+		{
+			$from_width:#{$from}px;
+		}
+		@else
+		{
+			@error "查無起始值";
+		}
+	}
+
+	@if $to =='sl'
+	{
+		$to_width:$superlarge_width - $edge;
+	}
+	@else if $to =='xl'
+	{
+		$to_width:$extralarge_width - $edge;
+	}
+	@else
+	{
+		@if type-of($to)=='number'
+		{
+			$to_width: $to - $edge;
+		}
+		@else
+		{
+			@error "查無結束值";
+		}
+
+	}
+
+	@if ($from - $to >= 0px)
+	{
+		@error "起始值不能大於或等於結束值";
+	}
+
+	@media screen and (min-width:$from_width) and (max-width:$to_width) {
+            @content;
+ 	}
+}
+
+
+
+/*某值(包含)以上*/
+@mixin rwdUp($v) {
+
+	//宣告變數
+	$width:$medium_width !default;
+
+	@if $v=='md'
+	{
+		$width:$medium_width;     //>768
+	}
+	@else if $v =='lg'
+	{
+		$width:$large_width;      //>992
+	}
+	@else if $v =='xl'
+	{
+		$width:$extralarge_width; //>1200
+	}
+	@else
+	{
+		@if type-of($v)=='number'
+		{
+			$width:$v;
+		}
+		@else
+		{
+			@error "輸入值錯誤";
+		}
+
+	}
+
+  	@media screen and (min-width: $width) {
+            @content;
+ 	 }
+}
+
+/*某值(不包含)以下*/
+@mixin rwdDown($v) {
+
+	//宣告變數
+	$width:$medium_width !default;
+
+	@if $v=='md'
+	{
+		$width:$medium_width - $edge;     //<768
+	}
+	@else if $v =='lg'
+	{
+		$width:$large_width - $edge;      //<992
+	}
+	@else if $v =='xl'
+	{
+		$width:$extralarge_width - $edge; //<1200
+	}
+	@else if $v =='sl'
+	{
+		$width:$superlarge_width - $edge; //<1400
+	}
+	@else
+	{
+		@if type-of($v)=='number'
+		{
+			$width:$v - $edge;
+		}
+		@else
+		{
+			@error "輸入值錯誤";
+		}
+
+	}
+
+  	@media screen and (max-width: $width) {
+            @content;
+ 	}
+}
+
+/*計算比例值*/
+@function my-calc($t,$v){
+	@if $t=='xl'
+	{
+		@return $v * 1110 / 1400; 
+	}
+	@if $t=='lg'
+	{
+		@return $v * 930 / 1400; 
+	}
+	@if $t=='md'
+	{
+		@return $v * 690 / 1400; 
+	}
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
