@@ -10,10 +10,11 @@ import { LoginService } from './login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorResponse } from '../app.interface';
 import { environment } from '../../environments/environment';
+import { Welcome } from "./welcome/welcome";
 
 @Component({
     selector: 'app-login',
-    imports: [FormsModule, MatCheckboxModule, MatButtonModule, RecaptchaV3Module, ButtonModule, InputOtpModule],
+	imports: [FormsModule, MatCheckboxModule, MatButtonModule, RecaptchaV3Module, ButtonModule, InputOtpModule, Welcome],
     templateUrl: './login.html',
     styleUrl: './login.scss'
 })

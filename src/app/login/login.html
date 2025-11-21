@@ -1,69 +1,11 @@
-<div class="bg"></div>
-<div class="blur-wrapper">
-    <div class="wrapper">
-        <svg class="logo"><use xlink:href="#digitimes-logo"></use></svg>
-        @if(step() === 0){
-            <div class="component">
-                <div class="title">DIGITIMES Lite 會員登入</div>
-                <div class="form-floating">
-                    <input type="email" [(ngModel)]="account" class="form-control my-input" placeholder="">
-                    <label for="account">Email</label>
-                </div>
-                @if(accountError()){
-                    <div class="error">{{accountError()}}</div>
-                }
-                <div class="form-floating">
-                    <input type="{{passwordType()}}" [(ngModel)]="password" name="password" class="form-control my-input" placeholder="">
-                    <label for="password">密碼</label>
-                    @if(passwordType() === 'password'){
-                        <button class="switch-btn" matIconButton (click)="togglePasswordType()"><svg><use xlink:href="#hide-password-icon"></use></svg></button>
-                    } @else{
-                        <button class="switch-btn" matIconButton (click)="togglePasswordType()"><svg><use xlink:href="#show-password-icon"></use></svg></button>
-                    }
-                </div>
-                @if(passwordError()){
-                    <div class="error">{{passwordError()}}</div>
-                }
-                <div class="remember-frame">
-                    <mat-checkbox class="remember-me" color="primary" [(ngModel)]="rememberMe">記住我</mat-checkbox>
 
-                    <a class="forgot-password">忘記密碼？</a>
-                </div>
-
-                <p-button label="登入" styleClass="submit-btn" [loading]="loading()" (click)="submit()" />
-
-                <div class="info-frame">
-                    親愛的DIGITIMES讀者您好<br>
-                    DIGITIMES Lite版，登入方式：<br>
-                    <ul>
-                        <li>登入方式以Email+密碼，帳密登入成功，會寄送簡訊驗證碼到手機，驗證通過才能開始使用。</li>
-                        <li>同一台手機只認證簡訊一次，如要更換閱讀平台，登入時就需要再重新驗證，在另外的電腦或登入，則原來的使用者，會被登出要求重新登入，一樣再送簡訊驗證。</li>
-                        <li>限定只能同時1人上線</li>
-                    </ul>
-                    DIGITIMES有權於任何時間修改或變更本服務條款之內容，修改後的服務條款內容將公佈網站上，
-                    感謝您對DIGITIMES行動版的支持與愛護。
-                </div>
-            </div>
-
-        } @else if(step() === 1){
-            <div class="component">
-                <div class="title">取得行動裝置授權</div>
-
-                <div class="message">系統將透過簡訊傳送一組認證碼至門號 0968706076 給您。<br>並請於5分鐘內進行驗證。</div>
-
-                <h2 align="center">請輸入簡訊中的授權碼</h2>
-
-                <p-inputotp class="verification" [(ngModel)]="verificationCode" [integerOnly]="true" size="large" [length]="6"/>
-
-                @if(codeError()){
-                    <div class="code-error">{{codeError()}}</div>
-                }
-                
-                <p-button label="送出" styleClass="submit-btn" [loading]="loading()" [disabled]="verificationCode.length<6" (click)="verify()"/>
-
-                <button type="button" class="code-resend">重寄授權碼</button>
-            </div>
-        }
+@if (step()===0) {
+    <div class="two-col-grid">
+        <div class="div1">
+            <div class="deco"></div>
+        </div>
+        <div class="div2">
+            <app-welcome/>
+        </div>
     </div>
-    
-</div>
+}
