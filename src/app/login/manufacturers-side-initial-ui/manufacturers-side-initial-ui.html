@@ -1,0 +1,30 @@
+<div class="background">
+    <div class="wrapper">
+        <div class="topic-frame">
+            <div class="logo"></div>
+            <div class="topic-desc-wrapper">
+                <div class="topic-desc">廠商端CMS | 首次登入與綁定</div>
+                <div class="topic-sub-desc">您正透過「專屬連結」完成帳號綁定宇首次登入</div>
+            </div>
+        </div>
+        <div class="fixed-tips">
+            提醒﹕此帳號有「待補件2項」。登入後將自動導向「更新報名資料」。
+        </div>
+        <p>專屬資訊(由系統帶入，僅供查閱)</p>
+        @for (item of Exclusive_Information(); track item.value) {
+            <div class="info-item">
+                <div class="info-item-label">{{ item.label }}</div>
+                <div class="info-item-value">{{ item.value }}</div>
+            </div>
+        }
+        <div class="fixed-tips">
+            <ul>
+                <li>專屬連結效期:{{ validity_period() }}</li>
+                <li>綁定後將建立可登入之帳號</li>
+            </ul>
+        </div>
+        <div class="fixed-tips">
+            AI補全提示﹕偵測到去年參展資料,可於登入後「一鍵帶入」基本資料。此為線框佔位, 實際互動由產品決定。
+        </div>
+    </div>
+</div>

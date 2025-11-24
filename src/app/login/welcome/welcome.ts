@@ -8,6 +8,7 @@ import { RouterLink } from "@angular/router";
 		Button,
 		RouterLink
 	],
+	standalone: true,
 	templateUrl: './welcome.html',
 	styleUrl: './welcome.scss'
 })

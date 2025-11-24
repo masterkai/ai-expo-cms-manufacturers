@@ -1,11 +1,19 @@
-
-@if (step()===0) {
+@if (step() === 0) {
     <div class="two-col-grid">
         <div class="div1">
             <div class="deco"></div>
         </div>
         <div class="div2">
             <app-welcome/>
+        </div>
+    </div>
+} @else if (step() === 1) {
+    <div class="two-col-grid">
+        <div class="div1">
+            <app-manufacturers-side-initial-ui/>
+        </div>
+        <div class="div2">
+            <app-register/>
         </div>
     </div>
 }
