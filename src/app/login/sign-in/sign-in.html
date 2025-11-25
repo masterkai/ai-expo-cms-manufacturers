@@ -1,4 +1,44 @@
 <div class="component">
-    <div class="title">歡迎登入AI expo CMS系統</div>
+    <div class="title"></div>
 
+</div>
+
+<div class="two-col-grid">
+    <div class="div1">
+        <app-manufacturers-side-initial-ui/>
+    </div>
+    <div class="div2">
+        <div class="background">
+            <div class="wrapper">
+                <h1 class="title">登入帳號</h1>
+                <div class="input-group">
+                    <p-floatlabel variant="on">
+                        <input [(ngModel)]="email_value" autocomplete="off" fluid id="email" pInputText/>
+                        <label for="email">電子郵件</label>
+                    </p-floatlabel
+                    >
+                    <div class="input-wrapper">
+                        <p-floatlabel variant="on">
+                            <input [(ngModel)]="password_value" autocomplete="off" fluid id="password" pInputText/>
+                            <label for="password">密碼</label>
+                        </p-floatlabel>
+                        <p>忘記密碼 | 重設密碼</p></div>
+
+
+                    <p-button
+                            [style]="{
+                width: '100%',
+                color: 'white',
+                backgroundColor: 'rgba(0,0,0,1)',
+                }"
+                            label="登入"
+                            severity="primary"
+                    />
+                </div>
+            </div>
+            <!-- add router link for the button to navigate to the sign-in page-->
+            <p>新客戶？<a routerLink="/register">建立新帳戶</a></p>
+
+        </div>
+    </div>
 </div>
