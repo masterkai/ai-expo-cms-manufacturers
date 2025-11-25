@@ -14,13 +14,14 @@ import { Register } from "./login/register/register";
 import { SignIn } from "./login/sign-in/sign-in";
 import { ForgotPassword } from "./login/forgot-password/forgot-password.component";
 import { ResetPassword } from "./login/reset-password/reset-password";
+import { commonGuard } from "./guard/common-guard";
 
 export const routes: Routes = [
-	{ path: 'login', canActivate: [weblogGuard], component: Login },
-	{ path: 'register', canActivate: [weblogGuard], component: Register },
-	{ path: 'sign-in', canActivate: [weblogGuard], component: SignIn },
-	{ path: 'forgot-password', canActivate: [weblogGuard], component: ForgotPassword },
-	{ path: 'reset-password', canActivate: [weblogGuard], component: ResetPassword },
+	{ path: 'login', canActivate: [commonGuard], component: Login },
+	{ path: 'register', canActivate: [commonGuard], component: Register },
+	{ path: 'sign-in', canActivate: [commonGuard], component: SignIn },
+	{ path: 'forgot-password', canActivate: [commonGuard], component: ForgotPassword },
+	{ path: 'reset-password', canActivate: [commonGuard], component: ResetPassword },
 	{
 		path: '', component: Index, canActivate: [loginGuard], children: [
 			{ path: '', canActivate: [weblogGuard], component: Home },
