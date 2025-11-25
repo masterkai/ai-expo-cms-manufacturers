@@ -56,14 +56,17 @@
 
 .info-item {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+	gap: 16px;
 	padding: 8px 0;
 	border-bottom: 1px solid #f0f0f0;
 }
 
 .info-item-label {
 	color: #666;
-	font-size: 14px;
+	font-size: 10px;
+	padding: 4px;
+	border: 1px solid #eee;
 }
 
 .info-item-value {

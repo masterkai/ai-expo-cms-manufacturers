@@ -13,12 +13,14 @@ import { weblogGuard } from './guard/weblog-guard';
 import { Register } from "./login/register/register";
 import { SignIn } from "./login/sign-in/sign-in";
 import { ForgotPassword } from "./login/forgot-password/forgot-password.component";
+import { ResetPassword } from "./login/reset-password/reset-password";
 
 export const routes: Routes = [
 	{ path: 'login', canActivate: [weblogGuard], component: Login },
 	{ path: 'register', canActivate: [weblogGuard], component: Register },
 	{ path: 'sign-in', canActivate: [weblogGuard], component: SignIn },
 	{ path: 'forgot-password', canActivate: [weblogGuard], component: ForgotPassword },
+	{ path: 'reset-password', canActivate: [weblogGuard], component: ResetPassword },
 	{
 		path: '', component: Index, canActivate: [loginGuard], children: [
 			{ path: '', canActivate: [weblogGuard], component: Home },
