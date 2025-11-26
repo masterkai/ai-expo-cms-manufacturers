@@ -15,6 +15,12 @@ import { SignIn } from "./login/sign-in/sign-in";
 import { ForgotPassword } from "./login/forgot-password/forgot-password.component";
 import { ResetPassword } from "./login/reset-password/reset-password";
 import { commonGuard } from "./guard/common-guard";
+import { BasicInformation } from "./home/basic-information/basic-information";
+import { ContactPerson } from "./home/contact-person/contact-person";
+import { ExhibitorRightsConfirmation } from "./home/exhibitor-rights-confirmation/exhibitor-rights-confirmation";
+import { ExhibitorInformationUpdate } from "./home/exhibitor-information-update/exhibitor-information-update";
+import { FileDownload } from "./home/file-download/file-download";
+import { ReviewAndCheckPreviewList } from "./home/review-and-check-preview-list/review-and-check-preview-list";
 
 export const routes: Routes = [
 	{ path: 'login', canActivate: [commonGuard], component: Login },
@@ -24,7 +30,32 @@ export const routes: Routes = [
 	{ path: 'reset-password', canActivate: [commonGuard], component: ResetPassword },
 	{
 		path: '', component: Index, canActivate: [loginGuard], children: [
-			{ path: '', canActivate: [weblogGuard], component: Home },
+			{
+				path: '', canActivate: [weblogGuard], component: Home, children: [
+					{ path: 'basic-info', canActivate: [weblogGuard], component: BasicInformation },
+					{
+						path: 'contact-person',
+						canActivate: [weblogGuard],
+						component: ContactPerson
+					}, {
+						path: 'exhibitor-rights-confirmation',
+						canActivate: [weblogGuard],
+						component: ExhibitorRightsConfirmation
+					}, {
+						path: 'exhibitor-information-update',
+						canActivate: [weblogGuard],
+						component: ExhibitorInformationUpdate
+					}, {
+						path: 'file-download',
+						canActivate: [weblogGuard],
+						component: FileDownload
+					}, {
+						path: 'review-and-check-preview-list',
+						canActivate: [weblogGuard],
+						component: ReviewAndCheckPreviewList
+					},
+				]
+			},
 			{ path: 'news/:id', canActivate: [weblogGuard], component: Article },
 			{
 				path: 'my', component: Setting, children: [

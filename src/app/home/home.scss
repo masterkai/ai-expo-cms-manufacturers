@@ -69,6 +69,11 @@ $border: #DAEAFF;
 				margin: 0 0 24px 0;
 				
 				.menu-item {
+					a {
+						display: flex;
+						align-items: center;
+					}
+					
 					display: flex;
 					align-items: center;
 					padding: 10px 16px;

@@ -12,24 +12,29 @@
             <div class="sidebar">
                 <h3>步驟</h3>
                 <ul class="sidebar-menu">
-                    <li class="menu-item active">
-                        <div class="circle">1</div>
-                        基本資料
+                    <li class="menu-item">
+                        <a routerLink="/basic-info" routerLinkActive="active-link">
+                            <div class="circle">1</div>
+                            基本資料</a>
                     </li>
                     <li class="menu-item">
-                        <div class="circle">2</div>
-                        聯絡人
+                        <a routerLink="/contact-person" routerLinkActive="active-link">
+                            <div class="circle">2</div>
+                            聯絡人</a>
                     </li>
                     <li class="menu-item">
-                        <div class="circle">3</div>
-                        參展權益確認
+                        <a routerLink="exhibitor-rights-confirmation" routerLinkActive="active-link">
+                            <div class="circle">3</div>
+                            參展權益確認</a>
                     </li>
                     <li class="menu-item">
-                        <div class="circle">4</div>
-                        參展資料更新
+                        <a routerLink="exhibitor-information-update" routerLinkActive="active-link">
+                            <div class="circle">4</div>
+                            參展資料更新</a>
                     </li>
-                    <li class="menu-item">審核檢查預覽列表</li>
-                    <li class="menu-item">文件下載</li>
+                    <li class="menu-item"><a routerLink="review-and-check-preview-list" routerLinkActive="active-link">審核檢查預覽列表</a>
+                    </li>
+                    <li class="menu-item"><a routerLink="file-download" routerLinkActive="active-link">文件下載</a></li>
                 </ul>
                 <div class="dead-line-panel">
                     <p>資料更新即將截止</p>
@@ -38,6 +43,7 @@
                 </div>
             </div>
             <div class="main-content">
+                <router-outlet></router-outlet>
             </div>
         </div>
 
