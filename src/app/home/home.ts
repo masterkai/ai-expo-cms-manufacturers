@@ -5,10 +5,11 @@ import { NewsList } from './home.interface';
 import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBar } from "primeng/progressbar";
+import { Button } from "primeng/button";
 
 @Component({
 	selector: 'app-home',
-	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar],
+	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar, Button],
 	templateUrl: './home.html',
 	styleUrl: './home.scss'
 })

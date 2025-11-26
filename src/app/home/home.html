@@ -1,1 +1,48 @@
-<p-progressbar [value]="50"></p-progressbar>
+<div class="app-wrapper">
+    <div class="wrapper">
+        <div class="progressbar-wrapper">
+            <div class="progressbar-info">
+                <div class="data-completeness">資料完整度﹕60%</div>
+                <div class="last-update-review-status">上次更新﹕YYYY-MM-DD HH:mm | 審核狀態:草稿</div>
+            </div>
+            <p-progressbar [value]="50"></p-progressbar>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <h3>步驟</h3>
+                <ul class="sidebar-menu">
+                    <li class="menu-item active">
+                        <div class="circle">1</div>
+                        基本資料
+                    </li>
+                    <li class="menu-item">
+                        <div class="circle">2</div>
+                        聯絡人
+                    </li>
+                    <li class="menu-item">
+                        <div class="circle">3</div>
+                        參展權益確認
+                    </li>
+                    <li class="menu-item">
+                        <div class="circle">4</div>
+                        參展資料更新
+                    </li>
+                    <li class="menu-item">審核檢查預覽列表</li>
+                    <li class="menu-item">文件下載</li>
+                </ul>
+                <div class="dead-line-panel">
+                    <p>資料更新即將截止</p>
+                    <p>倒數 5 天 6 小時 32 分鐘！</p>
+                    <div class="tips">請於 2025/10/31 前完成。</div>
+                </div>
+            </div>
+            <div class="main-content">
+            </div>
+        </div>
+
+        <div class="button-block">
+            <p-button label="Contrast" severity="contrast" variant="outlined"/>
+        </div>
+    </div>
+</div>
