@@ -2,7 +2,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use "_mediaWidth" as *;
-//@import "primeicons/primeicons.css";
+@import "primeicons/primeicons.css";
 
 
 :root {
@@ -97,7 +97,9 @@ input {
 	font-family: '微軟正黑體', sans-serif;
 }
 
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
 
 .skeleton-cover {
 	position: absolute !important;
@@ -119,10 +121,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 	outline: none;
 	border-radius: var(--border-radius);
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	
 	&:focus {
 		border-color: var(--primary-color);
 	}
-	&:disabled{
+	
+	&:disabled {
 		background-color: #e9ecef;
 	}
 	
@@ -176,7 +180,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 	}
 }
 
-.p-button{
+.p-button {
 	border-radius: var(--border-radius) !important;
 }
 
@@ -544,6 +548,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 }
 
 //隱藏右下方的captcha-badge
-.grecaptcha-badge { 
-    visibility: hidden !important;
+.grecaptcha-badge {
+	visibility: hidden !important;
 }

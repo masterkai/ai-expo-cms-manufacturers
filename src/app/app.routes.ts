@@ -31,7 +31,9 @@ export const routes: Routes = [
 	{
 		path: '', component: Index, canActivate: [loginGuard], children: [
 			{
-				path: '', canActivate: [weblogGuard], component: Home, children: [
+				path: '', canActivate: [weblogGuard], component: Home,
+				children: [
+					{ path: '', redirectTo: 'basic-info', pathMatch: 'full' },
 					{ path: 'basic-info', canActivate: [weblogGuard], component: BasicInformation },
 					{
 						path: 'contact-person',

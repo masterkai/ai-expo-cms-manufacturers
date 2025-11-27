@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBar } from "primeng/progressbar";
 import { Button } from "primeng/button";
-import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { RouterOutlet } from "@angular/router";
+import { SidebarMenu } from "./sidebar-menu/sidebar-menu";
+import { DeadLinePanel } from "./dead-line-panel/dead-line-panel";
 
 @Component({
 	selector: 'app-home',
-	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar, Button, RouterOutlet, RouterLink, RouterLinkActive],
+	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar, Button, RouterOutlet, SidebarMenu, DeadLinePanel],
 	templateUrl: './home.html',
 	styleUrl: './home.scss'
 })
