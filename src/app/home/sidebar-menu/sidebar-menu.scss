@@ -1,0 +1,43 @@
+.sidebar-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 24px 0;
+	
+	.menu-item {
+		a {
+			display: flex;
+			align-items: center;
+		}
+		
+		display: flex;
+		align-items: center;
+		padding: 10px 16px;
+		margin-bottom: 8px;
+		border-radius: 4px;
+		color: #555;
+		cursor: pointer;
+		transition: background 0.2s, color 0.2s;
+		$size: 24px;
+		
+		.circle {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: $size;
+			height: $size;
+			border-radius: 50%;
+			margin-right: 12px;
+			border: 1px solid #9199A5;
+		}
+		
+		&.active {
+			border: 1px solid #1976d2;
+			font-weight: 600;
+		}
+		
+		&:hover:not(.active) {
+			background: #f0f4fa;
+			color: #1976d2;
+		}
+	}
+}
