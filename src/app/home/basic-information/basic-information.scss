@@ -1,0 +1,23 @@
+.importing-history-block {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 0;
+	width: 100%;
+	
+	.div1 {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+	
+	.div2 {
+		grid-area: 1 / 2 / 2 / 3;
+	}
+}
+
+.input-group {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
