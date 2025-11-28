@@ -1,10 +1,35 @@
 <p>聯絡人</p>
 <!--匯入名片圖(支持 JPG/PNG/PDF)-->
-<div class="">
+<div class="wrapper">
     <p-button
             fluid
             icon="pi pi-plus"
             label="匯入名片圖(支持 JPG/PNG/PDF)"
             severity="contrast"
     />
+    <div class="contact-item">
+        <div class="contact-column">{{ contact_person().name }}</div>
+        <div class="contact-column">{{ contact_person().position }}</div>
+        <div class="contact-column">{{ contact_person().phone }}</div>
+        <div class="contact-column">
+            <p-button
+                    icon="pi pi-pencil"
+                    label="顯示"
+                    severity="secondary"
+                    variant="text"
+            />
+            <p-button
+                    icon="pi pi-pencil"
+                    label="編輯"
+                    severity="secondary"
+                    variant="text"
+            />
+            <p-button
+                    icon="pi pi-trash"
+                    label="刪除"
+                    severity="danger"
+                    variant="text"
+            />
+        </div>
+    </div>
 </div>
