@@ -1,15 +1,6 @@
 import { Routes } from '@angular/router';
-import { Index } from './index';
-import { loginGuard } from './index/login-guard';
 import { Home } from './home/home';
-import { Article } from './article/article';
 import { Login } from './login/login';
-import { Setting } from './setting/setting';
-import { MemberInfo } from './setting/member-info/member-info';
-import { Subscription } from './setting/subscription/subscription';
-import { MyKeep } from './setting/my-keep/my-keep';
-import { Policy } from './setting/policy/policy';
-import { weblogGuard } from './guard/weblog-guard';
 import { Register } from "./login/register/register";
 import { SignIn } from "./login/sign-in/sign-in";
 import { ForgotPassword } from "./login/forgot-password/forgot-password.component";
@@ -29,45 +20,26 @@ export const routes: Routes = [
 	{ path: 'forgot-password', canActivate: [commonGuard], component: ForgotPassword },
 	{ path: 'reset-password', canActivate: [commonGuard], component: ResetPassword },
 	{
-		path: '', component: Index, canActivate: [loginGuard], children: [
+		path: '', component: Home,
+		children: [
+			{ path: '', redirectTo: 'basic-info', pathMatch: 'full' },
+			{ path: 'basic-info', component: BasicInformation },
 			{
-				path: '', canActivate: [weblogGuard], component: Home,
-				children: [
-					{ path: '', redirectTo: 'basic-info', pathMatch: 'full' },
-					{ path: 'basic-info', canActivate: [weblogGuard], component: BasicInformation },
-					{
-						path: 'contact-person',
-						canActivate: [weblogGuard],
-						component: ContactPerson
-					}, {
-						path: 'exhibitor-rights-confirmation',
-						canActivate: [weblogGuard],
-						component: ExhibitorRightsConfirmation
-					}, {
-						path: 'exhibitor-information-update',
-						canActivate: [weblogGuard],
-						component: ExhibitorInformationUpdate
-					}, {
-						path: 'file-download',
-						canActivate: [weblogGuard],
-						component: FileDownload
-					}, {
-						path: 'review-and-check-preview-list',
-						canActivate: [weblogGuard],
-						component: ReviewAndCheckPreviewList
-					},
-				]
+				path: 'contact-person',
+				component: ContactPerson
+			}, {
+				path: 'exhibitor-rights-confirmation',
+				component: ExhibitorRightsConfirmation
+			}, {
+				path: 'exhibitor-information-update',
+				component: ExhibitorInformationUpdate
+			}, {
+				path: 'file-download',
+				component: FileDownload
+			}, {
+				path: 'review-and-check-preview-list',
+				component: ReviewAndCheckPreviewList
 			},
-			{ path: 'news/:id', canActivate: [weblogGuard], component: Article },
-			{
-				path: 'my', component: Setting, children: [
-					{ path: '', redirectTo: '/my/info', pathMatch: 'full' },
-					{ path: 'info', canActivate: [weblogGuard], component: MemberInfo },
-					{ path: 'subscription', canActivate: [weblogGuard], component: Subscription },
-					{ path: 'keep', canActivate: [weblogGuard], component: MyKeep },
-					{ path: 'policy', canActivate: [weblogGuard], component: Policy },
-				]
-			}
 		]
 	},
 	{ path: '**', redirectTo: '', pathMatch: 'full' }

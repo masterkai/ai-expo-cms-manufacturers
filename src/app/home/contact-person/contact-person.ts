@@ -1,17 +1,20 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { Button } from "primeng/button";
-import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
+import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 
 @Component({
 	selector: 'app-contact-person',
 	imports: [
-		Button
+		Button,
+		CommonDialog
 	],
 	templateUrl: './contact-person.html',
+	standalone: true,
 	styleUrl: './contact-person.scss'
 })
 export class ContactPerson {
-	myConfirm = inject(MyConfirm)
+	commonDialog = viewChild(CommonDialog)
+
 	contact_person = signal({
 		name: '王曉明',
 		email: 'ming@vendor.com',
@@ -21,14 +24,8 @@ export class ContactPerson {
 	})
 
 	showConfirm() {
-		this.myConfirm.confirm({
-			title: 'Confirm Action',
-			subTitle: 'Are you sure?',
-			icon: 'warning'
-		}).then(() => {
-			// User confirmed
-		}).catch(() => {
-			// User cancelled
-		});
+		const dialog = this.commonDialog();
+		if (dialog) dialog.onOpen();
+
 	}
 }
