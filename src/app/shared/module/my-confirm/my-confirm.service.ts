@@ -11,7 +11,7 @@ export class MyConfirm {
 
 	alert(data: any): Promise<boolean> {
 
-		const comfirmRef = this.dialog.open(MyConfirmComponent, {
+		const confirmRef = this.dialog.open(MyConfirmComponent, {
 			panelClass: 'my-dialog',
 			minWidth: '300px',
 			autoFocus: false,
@@ -26,7 +26,7 @@ export class MyConfirm {
 
 		return new Promise((resolve, rejectLa) => {
 
-			comfirmRef.afterClosed().subscribe(result => {
+			confirmRef.afterClosed().subscribe(result => {
 				resolve(result);
 			});
 
@@ -41,7 +41,7 @@ export class MyConfirm {
 			minWidth: '300px',
 			autoFocus: false,
 			data: {
-				type: 'comfirm',
+				type: 'confirm',
 				title: data.title,
 				subTitle: data.subTitle,
 				icon: data.icon,

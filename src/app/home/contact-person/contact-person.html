@@ -13,6 +13,7 @@
         <div class="contact-column">{{ contact_person().phone }}</div>
         <div class="contact-column contact-column__column-end">
             <p-button
+                    (click)="showConfirm()"
                     icon="pi pi-eye"
                     label="顯示"
                     severity="secondary"
