@@ -2,4 +2,23 @@
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	
+	.contact-item {
+		display: flex;
+		border: 1px solid #CBD5E1;
+		align-items: center;
+		padding: 4px 16px;
+		border-radius: 4px;
+		
+		.contact-column {
+			&__column-end {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				gap: 8px;
+			}
+			
+			flex: 1 1 auto;
+		}
+	}
 }

@@ -11,10 +11,10 @@ import { Button } from "primeng/button";
 })
 export class ContactPerson {
 	contact_person = signal({
-		name: '',
-		email: '',
-		phone: '',
-		position: '',
-		office_phone: ''
+		name: '王曉明',
+		email: 'ming@vendor.com',
+		phone: '0900000000',
+		position: 'PM',
+		office_phone: '02-12345678'
 	})
 }
