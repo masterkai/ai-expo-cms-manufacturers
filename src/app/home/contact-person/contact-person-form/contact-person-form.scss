@@ -44,6 +44,33 @@
 	}
 }
 
+.form-row-four {
+	display: flex;
+	gap: 8px;
+	
+	.div1 {
+		flex: 1 1 15%;
+	}
+	
+	.div2 {
+		flex: 1 1 75%;
+	}
+}
+
+.form-actions {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	
+	.div1 {
+		flex: 1;
+	}
+	
+	.div2 {
+		flex: 1;
+	}
+}
+
 :host {
 	display: flex;
 	flex-direction: column;
