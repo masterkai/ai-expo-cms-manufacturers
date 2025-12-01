@@ -1,8 +1,9 @@
-import { Component, signal, viewChild } from '@angular/core';
+import { Component, inject, signal, viewChild } from '@angular/core';
 import { Button } from "primeng/button";
 import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { NameCard } from "./name-card/name-card";
 import { ContactPersonForm } from "./contact-person-form/contact-person-form";
+import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
 
 @Component({
 	selector: 'app-contact-person',
@@ -19,6 +20,7 @@ import { ContactPersonForm } from "./contact-person-form/contact-person-form";
 export class ContactPerson {
 	commonDialog = viewChild(CommonDialog)
 	operation_mode = signal<'view' | 'edit'>('view')
+	myConfirm = inject(MyConfirm)
 	contact_person = signal({
 		name: '王曉明',
 		email: 'ming@vendor.com',
@@ -35,5 +37,20 @@ export class ContactPerson {
 
 	handleOperationModeChange(mode: 'view' | 'edit') {
 		this.operation_mode.set(mode);
+	}
+
+	handleDelete() {
+		this.myConfirm.confirm({
+			title: '确定要删除此联系人吗？',
+			icon: 'alert',
+		}).then(
+			result => {
+
+
+			},
+			cancel => {
+				return false;
+			}
+		)
 	}
 }
