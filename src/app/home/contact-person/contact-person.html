@@ -2,6 +2,7 @@
 <!--匯入名片圖(支持 JPG/PNG/PDF)-->
 <div class="wrapper">
     <p-button
+            (click)="showDialogue();handleOperationModeChange('ocr')"
             fluid
             icon="pi pi-plus"
             label="匯入名片圖(支持 JPG/PNG/PDF)"
@@ -48,6 +49,8 @@
         <app-contact-person-form
 
         />
+    } @else if (operation_mode() === 'ocr') {
+        <app-name-card-ocr-import/>
     }
 
 </app-common-dialog>

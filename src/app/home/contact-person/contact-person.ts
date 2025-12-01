@@ -4,6 +4,7 @@ import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { NameCard } from "./name-card/name-card";
 import { ContactPersonForm } from "./contact-person-form/contact-person-form";
 import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
+import { NameCardOcrImport } from "./name-card-ocr-import/name-card-ocr-import";
 
 @Component({
 	selector: 'app-contact-person',
@@ -11,7 +12,8 @@ import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
 		Button,
 		CommonDialog,
 		NameCard,
-		ContactPersonForm
+		ContactPersonForm,
+		NameCardOcrImport
 	],
 	templateUrl: './contact-person.html',
 	standalone: true,
@@ -19,7 +21,7 @@ import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
 })
 export class ContactPerson {
 	commonDialog = viewChild(CommonDialog)
-	operation_mode = signal<'view' | 'edit'>('view')
+	operation_mode = signal<OperationMode>('view')
 	myConfirm = inject(MyConfirm)
 	contact_person = signal({
 		name: '王曉明',
@@ -35,7 +37,7 @@ export class ContactPerson {
 
 	}
 
-	handleOperationModeChange(mode: 'view' | 'edit') {
+	handleOperationModeChange(mode: OperationMode) {
 		this.operation_mode.set(mode);
 	}
 
@@ -54,3 +56,5 @@ export class ContactPerson {
 		)
 	}
 }
+
+export type OperationMode = 'view' | 'edit' | 'ocr';
