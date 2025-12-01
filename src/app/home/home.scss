@@ -55,7 +55,15 @@ $border: #DAEAFF;
 			grid-area: 1 / 1 / 2 / 2;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			justify-content: flex-start;
+			gap: 20px;
+
+			.deadline-wrapper {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+			}
 			
 			h3 {
 				font-size: 1.2rem;
