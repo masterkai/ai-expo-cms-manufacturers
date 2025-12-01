@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div class="name-card-preview"></div>
+    <div class="ocr-form">
+        
+        <div class="card">
+            <p-table
+                    [(selection)]="selectedNameCardOCRData"
+                    [tableStyle]="{'min-width': '50rem'}"
+                    [value]="nameCardData"
+                    dataKey="columnName">
+                <ng-template #header>
+                    <tr>
+                        <th style="width: 4rem">
+                            <p-tableHeaderCheckbox/>
+                        </th>
+                        <th>欄位</th>
+                        <th>辨識值</th>
+                        <th>來源</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-nameCardItem>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="nameCardItem"/>
+                        </td>
+                        <td>{{ nameCardItem.columnName }}</td>
+                        <td>{{ nameCardItem.value }}</td>
+                        <td>{{ nameCardItem.source }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
