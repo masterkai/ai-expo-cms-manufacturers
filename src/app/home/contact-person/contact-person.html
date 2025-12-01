@@ -13,13 +13,14 @@
         <div class="contact-column">{{ contact_person().phone }}</div>
         <div class="contact-column contact-column__column-end">
             <p-button
-                    (click)="showConfirm()"
+                    (click)="showDialogue();handleOperationModeChange('view')"
                     icon="pi pi-eye"
                     label="顯示"
                     severity="secondary"
                     variant="text"
             />
             <p-button
+                    (click)="showDialogue();handleOperationModeChange('edit')"
                     icon="pi pi-pencil"
                     label="編輯"
                     severity="secondary"
@@ -36,28 +37,16 @@
 </div>
 
 <app-common-dialog
-        [header]="''">
-    <div class="card-wrapper">
-        <div class="card-wrapper__item">
-            <div>姓名</div>
-            <div>{{ contact_person().name }}</div>
-        </div>
-        <div class="card-wrapper__item">
-            <div>職稱</div>
-            <div>{{ contact_person().position }}</div>
-        </div>
-        <div class="card-wrapper__item">
-            <div>email</div>
-            <div>{{ contact_person().email }}</div>
-        </div>
-        <div class="card-wrapper__item">
-            <div>公司市話</div>
-            <div>{{ contact_person().office_phone }}</div>
-        </div>
-        <div class="card-wrapper__item">
-            <div>手機</div>
-            <div>{{ contact_person().phone }}</div>
-        </div>
-    </div>
+        [header]="''"
+        [needTopSpace]="true">
+    @if (operation_mode() === 'view') {
+        <app-name-card
+                [contact_person]="contact_person()"
+        />
+    } @else if (operation_mode() === 'edit') {
+        <app-contact-person-form
+
+        />
+    }
 
 </app-common-dialog>

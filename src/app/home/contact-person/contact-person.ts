@@ -1,12 +1,16 @@
 import { Component, signal, viewChild } from '@angular/core';
 import { Button } from "primeng/button";
 import { CommonDialog } from "../../shared/common-dialog/common-dialog";
+import { NameCard } from "./name-card/name-card";
+import { ContactPersonForm } from "./contact-person-form/contact-person-form";
 
 @Component({
 	selector: 'app-contact-person',
 	imports: [
 		Button,
-		CommonDialog
+		CommonDialog,
+		NameCard,
+		ContactPersonForm
 	],
 	templateUrl: './contact-person.html',
 	standalone: true,
@@ -14,7 +18,7 @@ import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 })
 export class ContactPerson {
 	commonDialog = viewChild(CommonDialog)
-
+	operation_mode = signal<'view' | 'edit'>('view')
 	contact_person = signal({
 		name: '王曉明',
 		email: 'ming@vendor.com',
@@ -23,9 +27,13 @@ export class ContactPerson {
 		office_phone: '02-12345678'
 	})
 
-	showConfirm() {
+	showDialogue() {
 		const dialog = this.commonDialog();
 		if (dialog) dialog.onOpen();
 
+	}
+
+	handleOperationModeChange(mode: 'view' | 'edit') {
+		this.operation_mode.set(mode);
 	}
 }
