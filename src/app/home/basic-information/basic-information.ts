@@ -4,6 +4,7 @@ import { InputGroup } from "primeng/inputgroup";
 import { InputText } from "primeng/inputtext";
 import { InputGroupAddon } from "primeng/inputgroupaddon";
 import { FloatLabel } from "primeng/floatlabel";
+import { Title } from "../../shared/title/title";
 
 @Component({
 	selector: 'app-basic-information',
@@ -12,7 +13,8 @@ import { FloatLabel } from "primeng/floatlabel";
 		InputGroup,
 		InputText,
 		InputGroupAddon,
-		FloatLabel
+		FloatLabel,
+		Title
 	],
 	templateUrl: './basic-information.html',
 	styleUrl: './basic-information.scss'

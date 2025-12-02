@@ -5,7 +5,7 @@ import { NameCard } from "./name-card/name-card";
 import { ContactPersonForm } from "./contact-person-form/contact-person-form";
 import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
 import { NameCardOcrImport } from "./name-card-ocr-import/name-card-ocr-import";
-import { ImageUpload } from "../../shared/image-upload/image-upload";
+import { Title } from "../../shared/title/title";
 
 @Component({
 	selector: 'app-contact-person',
@@ -15,7 +15,7 @@ import { ImageUpload } from "../../shared/image-upload/image-upload";
 		NameCard,
 		ContactPersonForm,
 		NameCardOcrImport,
-		ImageUpload
+		Title
 	],
 	templateUrl: './contact-person.html',
 	standalone: true,

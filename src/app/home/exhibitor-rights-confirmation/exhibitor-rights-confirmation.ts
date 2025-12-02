@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Button } from "primeng/button";
+import { Title } from "../../shared/title/title";
 
 @Component({
 	selector: 'app-exhibitor-rights-confirmation',
 	imports: [
-		Button
+		Button,
+		Title
 	],
 	templateUrl: './exhibitor-rights-confirmation.html',
 	styleUrl: './exhibitor-rights-confirmation.scss'
