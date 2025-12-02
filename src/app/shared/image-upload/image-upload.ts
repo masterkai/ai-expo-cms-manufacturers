@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './image-upload.scss'
 })
 export class ImageUpload {
+	imageSrc = signal<string | null>(null);
 
+	onFileSelected(event: Event) {
+		const input = event.target as HTMLInputElement;
+		if (!input.files || input.files.length === 0) return;
+
+		const file = input.files[0];
+		const reader = new FileReader();
+
+		reader.onload = () => {
+			this.imageSrc.set(reader.result as string);
+		};
+
+		reader.readAsDataURL(file);
+	}
 }

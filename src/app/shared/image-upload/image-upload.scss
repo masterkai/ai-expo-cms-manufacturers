@@ -1,0 +1,32 @@
+.upload-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	max-width: 300px;
+}
+
+.choose-btn {
+	padding: 10px 14px;
+	background: #3f51b5;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+}
+
+.choose-btn:hover {
+	background: #2c3c9f;
+}
+
+.preview-block {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 8px;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.preview-block img {
+	max-width: 100%;
+	border-radius: 4px;
+}

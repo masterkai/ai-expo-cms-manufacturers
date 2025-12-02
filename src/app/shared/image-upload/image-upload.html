@@ -1,1 +1,19 @@
-<p>image-upload works!</p>
+<div class="upload-container">
+    <input
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            hidden
+            #fileInput
+    />
+
+    <button type="button" (click)="fileInput.click()" class="choose-btn">
+        Choose Image
+    </button>
+    @if (imageSrc()){
+        <div class="preview-block">
+            <img [src]="imageSrc()" alt="Uploaded Image" />
+        </div>
+    }
+
+</div>
