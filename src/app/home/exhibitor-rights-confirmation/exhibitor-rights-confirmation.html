@@ -1,4 +1,4 @@
-<app-title [titleValue]="'參展資訊'" />
+<app-title [titleValue]="'參展資訊'"/>
 <div class="wrapper">@for (item of data; track item.itemName) {
     <div class="item">
         <span>只讀</span>
@@ -9,6 +9,7 @@
 <div class="block">
     <p>若需變更權益/議程/攤位,請用「提出異動請求」,由業務處理。</p>
     <p-button
+            (onClick)="handleClick()"
             [style]="{
                 width: '100%',
 
@@ -19,3 +20,33 @@
     />
 
 </div>
+<app-common-dialog
+        [header]="''"
+        [needTopSpace]="true"
+>
+    <div class="w-[500px] flex flex-col gap-4 justify-center item-center">
+        @for (item of data; track item.itemName) {
+            <div class="flex items-center">
+                <p-checkbox [(ngModel)]="selectedItemName" [inputId]="item.itemName" [value]="item.itemName"
+                            name="group"/>
+                <label [for]="item.itemName" class="ml-2"> {{ item.itemName }} </label>
+            </div>
+
+        }
+        <div class="flex justify-end gap-4 mt-4 w-full">
+            <div>
+                <p-button
+                        label="取消"
+                        severity="primary"
+                        variant="outlined"
+                />
+            </div>
+            <div>
+                <p-button
+                        label="提交"
+                        severity="secondary"
+                />
+            </div>
+        </div>
+    </div>
+</app-common-dialog>
