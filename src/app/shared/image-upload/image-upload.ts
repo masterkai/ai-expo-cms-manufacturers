@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,6 +7,7 @@ import { Component, signal } from '@angular/core';
   styleUrl: './image-upload.scss'
 })
 export class ImageUpload {
+	btnName = input.required<string>()
 	imageSrc = signal<string | null>(null);
 
 	onFileSelected(event: Event) {
