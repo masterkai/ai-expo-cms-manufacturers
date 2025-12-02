@@ -2,12 +2,12 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	max-width: 300px;
+	max-width: 100%;
 }
 
 .choose-btn {
 	padding: 10px 14px;
-	background: #3f51b5;
+	background: #000000;
 	color: white;
 	border: none;
 	cursor: pointer;
@@ -15,7 +15,7 @@
 }
 
 .choose-btn:hover {
-	background: #2c3c9f;
+	background: #3a3232;
 }
 
 .preview-block {
