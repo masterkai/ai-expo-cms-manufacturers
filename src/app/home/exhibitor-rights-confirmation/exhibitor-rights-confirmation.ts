@@ -4,6 +4,7 @@ import { Title } from "../../shared/title/title";
 import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { Checkbox } from "primeng/checkbox";
 import { FormsModule } from "@angular/forms";
+import { Tag } from "primeng/tag";
 
 @Component({
 	selector: 'app-exhibitor-rights-confirmation',
@@ -12,7 +13,8 @@ import { FormsModule } from "@angular/forms";
 		Title,
 		CommonDialog,
 		Checkbox,
-		FormsModule
+		FormsModule,
+		Tag
 	],
 	templateUrl: './exhibitor-rights-confirmation.html',
 	styleUrl: './exhibitor-rights-confirmation.scss'
