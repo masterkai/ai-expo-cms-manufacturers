@@ -1,1 +1,71 @@
-<p>exhibitor-information-update works!</p>
+<app-title [titleValue]="'參展商資訊更新'"/>
+<p-tag
+        severity="info"
+        value="此步驟需上傳:講者照片(JPG/PNG/SVG)、LOGO(JPG/PNG/SVG)、講稿(PDF/DOCX)、簡報(PPTX/PDF/Keynote)"/>
+<div class="upload-section">
+    <div class="div1">
+        <p-toast/>
+        <p-fileupload
+                (onUpload)="onUpload($event)"
+                [multiple]="false"
+                accept="image/*"
+                maxFileSize="1000000"
+                mode="advanced"
+                name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+        >
+            <ng-template #empty>
+                <div>Drag and drop files to here to upload.</div>
+            </ng-template>
+        </p-fileupload>
+    </div>
+    <div class="div2">
+        <p-fileupload
+                (onUpload)="onUploadDiv2($event)"
+                [multiple]="false"
+                accept="image/*"
+                maxFileSize="1000000"
+                mode="advanced"
+                name="div2File[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+        >
+            <ng-template #empty>
+                <div>Drag and drop files to here to upload (Div2).</div>
+            </ng-template>
+        </p-fileupload>
+    </div>
+    <div class="div3">
+        <p-fileupload
+                (onUpload)="onUploadDiv3($event)"
+                [multiple]="false"
+                accept="image/*"
+                maxFileSize="1000000"
+                mode="advanced"
+                name="div3File[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+        >
+            <ng-template #empty>
+                <div>Drag and drop files to here to upload (Div3).</div>
+            </ng-template>
+        </p-fileupload>
+    </div>
+    <div class="div4">
+        <p-fileupload
+                (onUpload)="onUploadDiv4($event)"
+                [multiple]="false"
+                accept="image/*"
+                maxFileSize="1000000"
+                mode="advanced"
+                name="div4File[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+        >
+            <ng-template #empty>
+                <div>Drag and drop files to here to upload (Div4).</div>
+            </ng-template>
+        </p-fileupload>
+    </div>
+    <div class="div5">
+    </div>
+    <div class="div6">
+    </div>
+</div>
