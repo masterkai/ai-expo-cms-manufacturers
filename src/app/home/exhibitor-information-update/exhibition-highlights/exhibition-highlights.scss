@@ -2,13 +2,17 @@
 	min-width: 600px;
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 	grid-template-rows: 1fr;
 	grid-column-gap: 12px;
 	grid-row-gap: 0;
 
-	.div1 { grid-area: 1 / 1 / 2 / 3; }
-	.div2 { grid-area: 1 / 3 / 2 / 6; }
+	.div1 {
+		display: grid;
+		place-items: center;
+		grid-area: 1 / 1 / 2 / 2; }
+	.div2 { grid-area: 1 / 2 / 2 / 4; }
+	.div3 { grid-area: 1 / 4 / 2 / 8; }
 }
 
 .form-actions {
