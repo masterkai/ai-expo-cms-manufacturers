@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FloatLabel } from "primeng/floatlabel";
 import { InputText } from "primeng/inputtext";
 import { Textarea } from "primeng/textarea";
@@ -16,5 +16,10 @@ import { Button } from "primeng/button";
   styleUrl: './exhibition-highlights.scss'
 })
 export class ExhibitionHighlights {
-
+	addOrEditMode  = signal<AddOrEditMode>('off');
+	toggleAddOrEditMode() {
+		this.addOrEditMode.set(this.addOrEditMode() === 'off' ? 'on' : 'off');
+	}
 }
+
+type AddOrEditMode = 'on' | 'off';
