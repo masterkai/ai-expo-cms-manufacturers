@@ -1,1 +1,31 @@
-<p>exhibition-theme works!</p>
+
+    <input [(ngModel)]="value" autocomplete="off" id="on_label" pInputText />
+    <div class="form-actions">
+        <div class="div1">
+            <p-button
+                    [style]="{
+                width: '100%',
+
+            }"
+                    fluid
+                    label="取消"
+                    variant="outlined"
+
+            />
+        </div>
+
+        <div class="div2">
+            <p-button
+                    [style]="{
+                width: '100%',
+                color: 'white',
+                backgroundColor: 'rgba(0,0,0,1)',
+            }"
+                    fluid
+                    label="提交"
+                    severity="primary"
+            />
+        </div>
+
+
+    </div>

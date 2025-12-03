@@ -1,0 +1,17 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.form-actions {
+	min-width: 400px;
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+
+	.div1,
+	.div2 {
+		flex: 1;
+	}
+}
