@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { Title } from "../../shared/title/title";
 import { Tag } from "primeng/tag";
 import { MessageService } from "primeng/api";
@@ -24,6 +24,7 @@ import { ExhibitionHighlights } from "./exhibition-highlights/exhibition-highlig
 	providers: [ MessageService ]
 })
 export class ExhibitorInformationUpdate {
+	dialog = viewChild(CommonDialog)
 	operationMode = signal<OperationMode>('exhibition-theme');
 	exhibitionTheme = signal('「以科技連結未來」');
 	exhibitionHighlights = signal([
@@ -63,6 +64,10 @@ export class ExhibitorInformationUpdate {
 	currentOperationModeTitle = signal<OperationModeTitle>('上傳演講者照片')
 
 	constructor(private messageService: MessageService) {
+	}
+
+	openDialog() {
+		this.dialog()?.onOpen();
 	}
 
 	handleOperationModeChange(mode: OperationMode) {
