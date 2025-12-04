@@ -27,7 +27,7 @@ export class ExhibitorInformationUpdate {
 	dialog = viewChild(CommonDialog)
 	operationMode = signal<OperationMode>('exhibition-theme');
 	exhibitionTheme = signal('「以科技連結未來」');
-	exhibitionHighlights = signal([
+	exhibitionHighlights = signal<HighLight[]>([
 		{
 			highlight: '展示最新科技產品與解決方案',
 			detail: '參觀者將有機會親身體驗前沿科技，了解其應用場景與未來發展趨勢。'
@@ -115,4 +115,9 @@ export class ExhibitorInformationUpdate {
 
 type OperationMode = 'exhibition-highlights' | 'exhibition-theme' | 'upload-speakers-photo';
 type OperationModeTitle = '編輯展會亮點' | '編輯展會主題' | '上傳演講者照片';
+
+export interface HighLight {
+	highlight: string;
+	detail: string;
+}
 

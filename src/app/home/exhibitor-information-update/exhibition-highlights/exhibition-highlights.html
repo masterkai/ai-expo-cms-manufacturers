@@ -3,8 +3,8 @@
         <p-button
                 (click)="toggleAddOrEditMode()"
                 [style]="{
-                color: 'white',
-                backgroundColor: 'rgba(0,0,0,1)',
+                color: '#494a4e',
+                backgroundColor: 'rgba(0,0,0,0.1)',
             }"
                 label="新增/編輯"
                 severity="secondary"
@@ -38,22 +38,43 @@
     }
 
 </div>
-<div class="form-wrapper">
-    <div class="div1"><i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i></div>
-    <div class="div2">
-        <p-floatlabel variant="in">
-            <input autocomplete="off" fluid id="highlight" pInputText/>
-            <label for="highlight">展覽亮點</label>
-        </p-floatlabel>
+<div class="table">
+    <div class="header-wrapper">
+        <div class="header-title">展會亮點</div>
+        <div class="header-description">亮點描述</div>
     </div>
-    <div class="div3">
-        <p-floatlabel variant="in">
+    @for (item of data(); track $index) {
+        <div
+                [ngClass]="{'!border-b-0': $index === data().length - 1}"
+                class="item-wrapper"
+        >
+            <div class="div1">{{ item.highlight }}</div>
+            <div class="div2">
+                {{ item.detail }}
+            </div>
+        </div>
+    }
+
+    @if (addOrEditMode() === 'on') {
+        <div class="form-wrapper">
+            <div class="div1"><i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i></div>
+            <div class="div2">
+                <p-floatlabel variant="in">
+                    <input autocomplete="off" fluid id="highlight" pInputText/>
+                    <label for="highlight">展覽亮點</label>
+                </p-floatlabel>
+            </div>
+            <div class="div3">
+                <p-floatlabel variant="in">
             <textarea class="h-full" cols="30" fluid id="description" pTextarea rows="1"
                       style="resize: vertical"></textarea>
-            <label for="description">亮點說明</label>
-        </p-floatlabel>
-    </div>
+                    <label for="description">亮點說明</label>
+                </p-floatlabel>
+            </div>
+        </div>
+    }
 </div>
+
 
 @if (addOrEditMode() === 'on') {
     <div class="flex justify-center">
