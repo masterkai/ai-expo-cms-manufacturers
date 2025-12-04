@@ -56,6 +56,18 @@ export class ExhibitionHighlights {
 	toggleAddOrEditMode() {
 		this.addOrEditMode.set(this.addOrEditMode() === 'off' ? 'on' : 'off');
 	}
+	// Additional methods for adding, editing, and saving highlights can be implemented here
+	// depending on the application's requirements.
+	deleteHighlight(index: number) {
+		const currentData = this.data();
+		currentData.splice(index, 1);
+		this.data.set([...currentData]);
+	}
+	addHighlight() {
+		const currentData = this.data();
+		currentData.push({ highlight: '', detail: '' });
+		this.data.set([...currentData]);
+	}
 }
 
 type AddOrEditMode = 'on' | 'off';

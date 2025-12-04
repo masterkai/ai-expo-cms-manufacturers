@@ -43,7 +43,7 @@
         <div class="header-title">展會亮點</div>
         <div class="header-description">亮點描述</div>
     </div>
-    @if (addOrEditMode()==='off') {
+    @if (addOrEditMode() === 'off') {
         @for (item of data(); track $index) {
             <div
                     [ngClass]="{'!border-b-0': $index === data().length - 1}"
@@ -60,7 +60,12 @@
     @if (addOrEditMode() === 'on') {
         @for (item of data(); track $index) {
             <div class="form-wrapper">
-                <div class="div1"><i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i></div>
+                <div
+                        (click)="deleteHighlight($index)"
+                        class="div1"
+                >
+                    <i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i>
+                </div>
                 <div class="div2">
                     <p-floatlabel variant="in">
                         <input
@@ -82,7 +87,7 @@
                     id="description"
                     pTextarea
                     rows="1"
-                      style="resize: vertical"
+                    style="resize: vertical"
             >
 
             </textarea>
