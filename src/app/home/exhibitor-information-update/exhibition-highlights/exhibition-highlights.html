@@ -16,16 +16,6 @@
                     (click)="toggleAddOrEditMode()"
                     [style]="{
                 width: '100%',
-
-            }"
-                    fluid
-                    label="取消"
-                    variant="outlined"
-
-            />
-            <p-button
-                    [style]="{
-                width: '100%',
                 color: 'white',
                 backgroundColor: 'rgba(0,0,0,1)',
             }"
@@ -38,12 +28,13 @@
     }
 
 </div>
-<div class="table">
-    <div class="header-wrapper">
-        <div class="header-title">展會亮點</div>
-        <div class="header-description">亮點描述</div>
-    </div>
-    @if (addOrEditMode() === 'off') {
+
+<div class="header-wrapper">
+    <div class="header-title">展會亮點</div>
+    <div class="header-description">亮點描述</div>
+</div>
+@if (addOrEditMode() === 'off') {
+    <div class="t-body-wrapper">
         @for (item of data(); track $index) {
             <div
                     [ngClass]="{'!border-b-0': $index === data().length - 1}"
@@ -55,9 +46,11 @@
                 </div>
             </div>
         }
-    }
+    </div>
+}
 
-    @if (addOrEditMode() === 'on') {
+@if (addOrEditMode() === 'on') {
+    <div class="t-body-wrapper">
         @for (item of data(); track $index) {
             <div class="form-wrapper">
                 <div
@@ -96,12 +89,15 @@
                 </div>
             </div>
         }
-    }
-</div>
+    </div>
+}
 
 
 @if (addOrEditMode() === 'on') {
-    <div class="flex justify-center">
+    <div
+            (click)="addHighlight()"
+            class="flex justify-center"
+    >
         <p-button [rounded]="true" icon="pi pi-plus"/>
     </div>
 }

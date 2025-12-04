@@ -28,6 +28,8 @@
 }
 
 .item-wrapper {
+	min-width: 800px;
+	width: 100%;
 	padding: 8px;
 	margin-bottom: 12px;
 	border-bottom: 1px solid #e0e0e0;
@@ -46,8 +48,8 @@
 	}
 }
 
-.table {
-	width: 100%;
+.t-body-wrapper {
+	width: 980px;
 	height: 400px;
 	overflow: auto;
 	margin-bottom: 20px;
