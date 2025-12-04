@@ -2,7 +2,13 @@
 
 <div class="importing-history-block">
     <div class="div1">
-        <p-button fluid label="匯入名片圖" severity="contrast" variant="outlined"/>
+        <p-button
+                (click)="handleOpenDialog()"
+                fluid
+                label="匯入名片圖"
+                severity="contrast"
+                variant="outlined"
+        />
     </div>
     <div class="div2">
         <p-inputgroup>
@@ -40,3 +46,9 @@
         <label for="on_label">公司簡介(選填)</label>
     </p-floatlabel>
 </div>
+
+<app-common-dialog
+        [header]="''"
+        [needTopSpace]="true">
+    <app-name-card-ocr-import />
+</app-common-dialog>

@@ -6,6 +6,8 @@ $border: #E2E8F0;
 }
 
 .upload-section {
+	height: 100%;
+	overflow-y: auto;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(3, 1fr);

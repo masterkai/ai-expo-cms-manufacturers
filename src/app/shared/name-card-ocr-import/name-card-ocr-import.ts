@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { Checkbox } from "primeng/checkbox";
-import { NameCardOcr } from "../../../services/name-card-ocr";
+import { NameCardOcr } from "../../services/name-card-ocr";
 import { TableModule } from "primeng/table";
-import { ImageUpload } from "../../../shared/image-upload/image-upload";
+import { ImageUpload } from "../image-upload/image-upload";
 
 @Component({
 	selector: 'app-name-card-ocr-import',
 	imports: [
-		Checkbox,
 		TableModule,
 		ImageUpload
 	],

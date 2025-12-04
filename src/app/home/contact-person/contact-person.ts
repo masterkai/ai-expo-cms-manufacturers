@@ -4,7 +4,7 @@ import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { NameCard } from "./name-card/name-card";
 import { ContactPersonForm } from "./contact-person-form/contact-person-form";
 import { MyConfirm } from "../../shared/module/my-confirm/my-confirm.service";
-import { NameCardOcrImport } from "./name-card-ocr-import/name-card-ocr-import";
+import { NameCardOcrImport } from "../../shared/name-card-ocr-import/name-card-ocr-import";
 import { Title } from "../../shared/title/title";
 
 @Component({

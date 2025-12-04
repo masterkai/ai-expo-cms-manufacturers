@@ -8,7 +8,7 @@ import { ProgressBar } from "primeng/progressbar";
 import { Button } from "primeng/button";
 import { RouterOutlet } from "@angular/router";
 import { SidebarMenu } from "./sidebar-menu/sidebar-menu";
-import { DeadLinePanel } from "./dead-line-panel/dead-line-panel";
+import { DeadLinePanel } from "../shared/dead-line-panel/dead-line-panel";
 
 @Component({
 	selector: 'app-home',
