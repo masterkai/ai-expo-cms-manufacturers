@@ -7,6 +7,7 @@ import { FileUpload, FileUploadEvent } from "primeng/fileupload";
 import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { ExhibitionTheme } from "./exhibition-theme/exhibition-theme";
 import { ExhibitionHighlights } from "./exhibition-highlights/exhibition-highlights";
+import { FaceAutoCropper } from "../../shared/face-auto-cropper/face-auto-cropper";
 
 @Component({
 	selector: 'app-exhibitor-information-update',
@@ -17,7 +18,8 @@ import { ExhibitionHighlights } from "./exhibition-highlights/exhibition-highlig
 		FileUpload,
 		CommonDialog,
 		ExhibitionTheme,
-		ExhibitionHighlights
+		ExhibitionHighlights,
+		FaceAutoCropper
 	],
 	templateUrl: './exhibitor-information-update.html',
 	styleUrl: './exhibitor-information-update.scss',

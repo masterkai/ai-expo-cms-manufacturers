@@ -9,20 +9,9 @@
             <h3 class="font-bold">講者照片上傳</h3>
             <p class="text-[12px] text-gray-500">規格:JPG/PNG直式3:4、1200×1600p×、檔案5MB</p>
         </div>
+        <app-face-auto-cropper></app-face-auto-cropper>
         <p-toast/>
-        <p-fileupload
-                (onUpload)="onUpload($event)"
-                [multiple]="false"
-                accept="image/*"
-                maxFileSize="1000000"
-                mode="advanced"
-                name="demo[]"
-                url="https://www.primefaces.org/cdn/api/upload.php"
-        >
-            <ng-template #empty>
-                <div>Drag and drop files to here to upload.</div>
-            </ng-template>
-        </p-fileupload>
+
     </div>
     <div class="div2">
         <div class="flex flex-column  gap-[4px]  mb-2">
