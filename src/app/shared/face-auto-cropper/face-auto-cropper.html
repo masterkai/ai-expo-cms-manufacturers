@@ -1,0 +1,35 @@
+<button
+        (click)="browseInput.click()"
+        class="browse-input"
+        type="button"
+>
+    選擇圖片
+</button>
+<input
+    #browseInput
+    (change)="onFileChange($event);oOpenDialog()"
+    accept="image/*"
+    style="display: none;"
+    type="file"
+/>
+
+<app-common-dialog
+        [header]="'講者照片上傳'"
+        [needTopSpace]="true"
+>
+    <div class="image-upload-container"><p>規格:JPG/PNGS直式3:4、1200×1600px、檔案5MB;臉部高度占畫面30一60%,頭部落在頭型標線內</p>
+        <div class="stage-container">
+            <div #stageContainer class="stage"></div>
+        </div>
+
+        @if (imageLoaded()) {
+            <div class="controls">
+                <button (click)="zoom(1.1)">Zoom +</button>
+                <button (click)="zoom(0.9)">Zoom -</button>
+                <button (click)="resetToFaceCenter()">Reset</button>
+                <button (click)="exportCropped()">Export</button>
+                <button (click)="rotate(90)">Rotate 90°</button>
+                <button (click)="rotate(-90)">Rotate -90°</button>
+            </div>
+        }</div>
+</app-common-dialog>
