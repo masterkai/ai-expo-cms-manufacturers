@@ -43,35 +43,54 @@
         <div class="header-title">展會亮點</div>
         <div class="header-description">亮點描述</div>
     </div>
-    @for (item of data(); track $index) {
-        <div
-                [ngClass]="{'!border-b-0': $index === data().length - 1}"
-                class="item-wrapper"
-        >
-            <div class="div1">{{ item.highlight }}</div>
-            <div class="div2">
-                {{ item.detail }}
+    @if (addOrEditMode()==='off') {
+        @for (item of data(); track $index) {
+            <div
+                    [ngClass]="{'!border-b-0': $index === data().length - 1}"
+                    class="item-wrapper"
+            >
+                <div class="div1">{{ item.highlight }}</div>
+                <div class="div2">
+                    {{ item.detail }}
+                </div>
             </div>
-        </div>
+        }
     }
 
     @if (addOrEditMode() === 'on') {
-        <div class="form-wrapper">
-            <div class="div1"><i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i></div>
-            <div class="div2">
-                <p-floatlabel variant="in">
-                    <input autocomplete="off" fluid id="highlight" pInputText/>
-                    <label for="highlight">展覽亮點</label>
-                </p-floatlabel>
+        @for (item of data(); track $index) {
+            <div class="form-wrapper">
+                <div class="div1"><i class="pi pi-minus-circle text-2xl text-red-600 cursor-pointer"></i></div>
+                <div class="div2">
+                    <p-floatlabel variant="in">
+                        <input
+                                [(ngModel)]="item.highlight"
+                                autocomplete="off"
+                                fluid id="highlight"
+                                pInputText
+                        />
+                        <label for="highlight">展覽亮點</label>
+                    </p-floatlabel>
+                </div>
+                <div class="div3">
+                    <p-floatlabel variant="in">
+            <textarea
+                    [(ngModel)]="item.detail"
+                    class="h-full"
+                    cols="30"
+                    fluid
+                    id="description"
+                    pTextarea
+                    rows="1"
+                      style="resize: vertical"
+            >
+
+            </textarea>
+                        <label for="description">亮點說明</label>
+                    </p-floatlabel>
+                </div>
             </div>
-            <div class="div3">
-                <p-floatlabel variant="in">
-            <textarea class="h-full" cols="30" fluid id="description" pTextarea rows="1"
-                      style="resize: vertical"></textarea>
-                    <label for="description">亮點說明</label>
-                </p-floatlabel>
-            </div>
-        </div>
+        }
     }
 </div>
 
