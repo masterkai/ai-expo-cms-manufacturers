@@ -4,10 +4,11 @@ $border: #E2E8F0;
 	flex-direction: column;
 	gap: 20px;
 }
-
-.upload-section {
-	height: 100%;
+.operation-area {
+	height: calc(100vh - 320px);
 	overflow-y: auto;
+}
+.upload-section {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(3, 1fr);

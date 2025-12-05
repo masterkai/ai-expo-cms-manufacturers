@@ -8,6 +8,7 @@ import { CommonDialog } from "../../shared/common-dialog/common-dialog";
 import { ExhibitionTheme } from "./exhibition-theme/exhibition-theme";
 import { ExhibitionHighlights } from "./exhibition-highlights/exhibition-highlights";
 import { FaceAutoCropper } from "../../shared/face-auto-cropper/face-auto-cropper";
+import { SpeakersList } from "./speakers-list/speakers-list";
 
 @Component({
 	selector: 'app-exhibitor-information-update',
@@ -19,7 +20,8 @@ import { FaceAutoCropper } from "../../shared/face-auto-cropper/face-auto-croppe
 		CommonDialog,
 		ExhibitionTheme,
 		ExhibitionHighlights,
-		FaceAutoCropper
+		FaceAutoCropper,
+		SpeakersList
 	],
 	templateUrl: './exhibitor-information-update.html',
 	styleUrl: './exhibitor-information-update.scss',

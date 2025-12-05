@@ -3,101 +3,104 @@
         severity="info"
         value="此步驟需上傳:講者照片(JPG/PNG/SVG)、LOGO(JPG/PNG/SVG)、講稿(PDF/DOCX)、簡報(PPTX/PDF/Keynote)"
 />
-<div class="upload-section">
-    <div class="div1">
-        <div class="flex flex-column  gap-[4px]  mb-2">
-            <h3 class="font-bold">講者照片上傳</h3>
-            <p class="text-[12px] text-gray-500">規格:JPG/PNG直式3:4、1200×1600p×、檔案5MB</p>
-        </div>
-        <app-face-auto-cropper></app-face-auto-cropper>
-        <p-toast/>
+<div class="operation-area">
+    <div class="upload-section">
+        <div class="div1">
+            <div class="flex flex-column  gap-[4px]  mb-2">
+                <h3 class="font-bold">講者照片上傳</h3>
+                <p class="text-[12px] text-gray-500">規格:JPG/PNG直式3:4、1200×1600p×、檔案5MB</p>
+            </div>
+            <app-face-auto-cropper></app-face-auto-cropper>
+            <p-toast/>
 
-    </div>
-    <div class="div2">
-        <div class="flex flex-column  gap-[4px]  mb-2">
-            <h3 class="font-bold">LOGO上傳</h3>
-            <p class="text-[12px] text-gray-500">規格:JPG/PNG、≧ 1200×1600p×、檔案 ≦ 5MB</p>
         </div>
-        <p-fileupload
-                (onUpload)="onUploadDiv2($event)"
-                [multiple]="false"
-                accept="image/*"
-                maxFileSize="1000000"
-                mode="advanced"
-                name="div2File[]"
-                url="https://www.primefaces.org/cdn/api/upload.php"
-        >
-            <ng-template #empty>
-                <div>Drag and drop files to here to upload.</div>
-            </ng-template>
-        </p-fileupload>
-    </div>
-    <div class="div3">
-        <div class="flex flex-column gap-[4px] mb-2">
-            <h3 class="font-bold">講稿上傳</h3>
-            <p class="text-[12px] text-gray-500">允許:PDF/DOCX;大小 ≦ 20MB</p>
+        <div class="div2">
+            <div class="flex flex-column  gap-[4px]  mb-2">
+                <h3 class="font-bold">LOGO上傳</h3>
+                <p class="text-[12px] text-gray-500">規格:JPG/PNG、≧ 1200×1600p×、檔案 ≦ 5MB</p>
+            </div>
+            <p-fileupload
+                    (onUpload)="onUploadDiv2($event)"
+                    [multiple]="false"
+                    accept="image/*"
+                    maxFileSize="1000000"
+                    mode="advanced"
+                    name="div2File[]"
+                    url="https://www.primefaces.org/cdn/api/upload.php"
+            >
+                <ng-template #empty>
+                    <div>Drag and drop files to here to upload.</div>
+                </ng-template>
+            </p-fileupload>
         </div>
-        <p-fileupload
-                (onUpload)="onUploadDiv3($event)"
-                [multiple]="false"
-                accept="image/*"
-                maxFileSize="1000000"
-                mode="advanced"
-                name="div3File[]"
-                url="https://www.primefaces.org/cdn/api/upload.php"
-        >
-            <ng-template #empty>
-                <div>Drag and drop files to here to upload.</div>
-            </ng-template>
-        </p-fileupload>
-    </div>
-    <div class="div4">
-        <div class="flex flex-column gap-[4px] mb-2">
-            <h3 class="font-bold">簡報上傳</h3>
-            <p class="text-[12px] text-gray-500">允許：PPTX / PDF / Key；大小 ≤ 50MB；字型請嵌入或改為向量</p>
+        <div class="div3">
+            <div class="flex flex-column gap-[4px] mb-2">
+                <h3 class="font-bold">講稿上傳</h3>
+                <p class="text-[12px] text-gray-500">允許:PDF/DOCX;大小 ≦ 20MB</p>
+            </div>
+            <p-fileupload
+                    (onUpload)="onUploadDiv3($event)"
+                    [multiple]="false"
+                    accept="image/*"
+                    maxFileSize="1000000"
+                    mode="advanced"
+                    name="div3File[]"
+                    url="https://www.primefaces.org/cdn/api/upload.php"
+            >
+                <ng-template #empty>
+                    <div>Drag and drop files to here to upload.</div>
+                </ng-template>
+            </p-fileupload>
         </div>
-        <p-fileupload
-                (onUpload)="onUploadDiv4($event)"
-                [multiple]="false"
-                accept="image/*"
-                maxFileSize="1000000"
-                mode="advanced"
-                name="div4File[]"
-                url="https://www.primefaces.org/cdn/api/upload.php"
-        >
-            <ng-template #empty>
-                <div>Drag and drop files to here to upload.</div>
-            </ng-template>
-        </p-fileupload>
-    </div>
-    <div class="div5">
-        <h3
-                (click)="handleOperationModeChange('exhibition-theme');handleOperationModeTitleChange('編輯展會主題');openDialog()"
-                class="font-bold mb-2 flex items-center gap-[12px] cursor-pointer">
-            展出主題(可編輯)
-            <i class="pi pi-pencil"></i>
-        </h3>
-        <div class="exhibition-theme">{{ exhibitionTheme() }}</div>
-    </div>
-    <div class="div6">
-        <h3
-                (click)="handleOperationModeChange('exhibition-highlights');handleOperationModeTitleChange('編輯展會亮點');openDialog()"
-                class="font-bold mb-2 flex items-center gap-[12px] cursor-pointer">
-            展出亮點/Demo需求(可編輯)
-            <i class="pi pi-pencil"></i>
-        </h3>
-        <div class="exhibition-highlights">
-            <ul>
-                @for (item of exhibitionHighlights(); track item.highlight) {
-                    <li>
-                        <span class="font-bold">{{ item.highlight }}</span><br>
-                        {{ item.detail }}
-                    </li>
+        <div class="div4">
+            <div class="flex flex-column gap-[4px] mb-2">
+                <h3 class="font-bold">簡報上傳</h3>
+                <p class="text-[12px] text-gray-500">允許：PPTX / PDF / Key；大小 ≤ 50MB；字型請嵌入或改為向量</p>
+            </div>
+            <p-fileupload
+                    (onUpload)="onUploadDiv4($event)"
+                    [multiple]="false"
+                    accept="image/*"
+                    maxFileSize="1000000"
+                    mode="advanced"
+                    name="div4File[]"
+                    url="https://www.primefaces.org/cdn/api/upload.php"
+            >
+                <ng-template #empty>
+                    <div>Drag and drop files to here to upload.</div>
+                </ng-template>
+            </p-fileupload>
+        </div>
+        <div class="div5">
+            <h3
+                    (click)="handleOperationModeChange('exhibition-theme');handleOperationModeTitleChange('編輯展會主題');openDialog()"
+                    class="font-bold mb-2 flex items-center gap-[12px] cursor-pointer">
+                展出主題(可編輯)
+                <i class="pi pi-pencil"></i>
+            </h3>
+            <div class="exhibition-theme">{{ exhibitionTheme() }}</div>
+        </div>
+        <div class="div6">
+            <h3
+                    (click)="handleOperationModeChange('exhibition-highlights');handleOperationModeTitleChange('編輯展會亮點');openDialog()"
+                    class="font-bold mb-2 flex items-center gap-[12px] cursor-pointer">
+                展出亮點/Demo需求(可編輯)
+                <i class="pi pi-pencil"></i>
+            </h3>
+            <div class="exhibition-highlights">
+                <ul>
+                    @for (item of exhibitionHighlights(); track item.highlight) {
+                        <li>
+                            <span class="font-bold">{{ item.highlight }}</span><br>
+                            {{ item.detail }}
+                        </li>
 
-                }
-            </ul>
+                    }
+                </ul>
+            </div>
         </div>
     </div>
+    <app-speakers-list></app-speakers-list>
 </div>
 
 <app-common-dialog
