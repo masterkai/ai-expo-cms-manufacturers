@@ -15,17 +15,21 @@
 
 .image-upload-block {
 	width: 100%;
-	height: max-content;
+	height: 124px;
 	padding: 16px;
 	border: 1px solid #E2E8F0;
 	border-radius: 8px;
 	background-color: #fff;
 }
+$button-color: #64748B;
 
 .browse-input {
+	&:hover {
+		background-color: darken($button-color, 10%);
+	}
 	padding: var(--p-button-padding-y) var(--p-button-padding-x);
 	cursor: pointer;
-	background-color: #64748B;
+	background-color: $button-color;
 	color: #fff;
 	border: none;
 	border-radius: 8px;
