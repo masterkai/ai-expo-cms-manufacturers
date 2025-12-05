@@ -1,0 +1,30 @@
+<p-floatlabel variant="in">
+    <input [(ngModel)]="speaker_name" autocomplete="off" fluid id="speaker_name" pInputText />
+    <label for="speaker_name">講者姓名</label>
+</p-floatlabel>
+<p-floatlabel variant="in">
+    <input [(ngModel)]="speaker_job_title" autocomplete="off" fluid id="speaker_job_title" pInputText />
+    <label for="speaker_job_title">講者現職</label>
+</p-floatlabel>
+<p-floatlabel variant="in">
+    <textarea [(ngModel)]="speaker_introduction" class="h-full" cols="30" fluid id="speaker_introduction" pTextarea rows="5" style="resize: none"></textarea>
+    <label for="speaker_introduction">講者簡介</label>
+</p-floatlabel>
+
+<div class="flex justify-end gap-4 mt-4 w-full">
+    <div>
+        <p-button
+                fluid
+                label="取消"
+                severity="primary"
+                variant="outlined"
+        />
+    </div>
+    <div>
+        <p-button
+                fluid
+                label="提交"
+                severity="primary"
+        />
+    </div>
+</div>
