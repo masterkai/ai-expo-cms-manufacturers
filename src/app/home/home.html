@@ -1,4 +1,9 @@
 <div class="app-wrapper">
+    <div
+            (click)="toggleModifyReviewProcessRecordDialog()"
+            class="modify-review-process-record">
+        修改與審核歷程紀錄
+    </div>
     <div class="wrapper">
         <div class="progressbar-wrapper">
             <div class="progressbar-info">
@@ -26,3 +31,12 @@
         </div>
     </div>
 </div>
+
+<app-common-dialog
+        [header]="''"
+        [needTopSpace]="true">
+
+</app-common-dialog>
+<p-drawer [(visible)]="visible" header="退回歷程列表" styleClass="!w-[800px] md:!w-80 lg:!w-[90vw]">
+    <app-modify-review-process-record/>
+</p-drawer>

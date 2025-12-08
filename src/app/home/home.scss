@@ -3,10 +3,34 @@
 $border: #DAEAFF;
 
 .app-wrapper {
+	position: relative;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	
+	.modify-review-process-record {
+		&:hover {
+			background-color: #FFF3BF;
+			color: #7C5C00;
+		}
+		
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+		z-index: 10;
+		writing-mode: vertical-lr;
+		text-orientation: mixed;
+		background-color: #FFFAE6;
+		border: 1px solid #FFE58F;
+		padding: 20px 12px;
+		border-radius: 4px;
+		font-size: 16px;
+		color: #AD8B00;
+		cursor: pointer;
+		transition: background-color 0.2s, color 0.2s;
+	}
 	
 	.wrapper {
 		width: 100%;
@@ -57,7 +81,7 @@ $border: #DAEAFF;
 			flex-direction: column;
 			justify-content: flex-start;
 			gap: 20px;
-
+			
 			.deadline-wrapper {
 				height: 100%;
 				display: flex;
