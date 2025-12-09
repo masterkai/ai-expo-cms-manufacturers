@@ -1,1 +1,66 @@
-<p class="w-[900px]">modify-review-process-record works!</p>
+<p-tabs value="0">
+    <p-tablist>
+        <p-tab value="0">更新歷程</p-tab>
+        <p-tab value="1">審核歷程</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+        <p-tabpanel value="0">
+            <p-button (onClick)="exportExcelModify()" class="mb-3" icon="pi pi-file-excel"
+                      label="匯出更新歷程CSV"></p-button>
+            <p-table
+                    [paginator]="true"
+                    [rowsPerPageOptions]="[5, 10, 20]"
+                    [rows]="5"
+                    [tableStyle]="{ 'min-width': '50rem' }"
+                    [value]="modifyProcess()"
+            >
+                <ng-template #header>
+                    <tr>
+                        <th style="width:25%">更新時間</th>
+                        <th style="width:25%">set By</th>
+                        <th style="width:25%">欄位</th>
+                        <th style="width:25%">舊值</th>
+                        <th style="width:25%">新值</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-customer>
+                    <tr>
+                        <td>{{ customer.updateTime }}</td>
+                        <td>{{ customer.updatedBy }}</td>
+                        <td>{{ customer.columnName }}</td>
+                        <td>{{ customer.oldValue }}</td>
+                        <td>{{ customer.newValue }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </p-tabpanel>
+        <p-tabpanel value="1">
+            <p-button (onClick)="exportExcelReview()" class="mb-3" icon="pi pi-file-excel"
+                      label="匯出審核歷程CSV"></p-button>
+            <p-table
+                    [paginator]="true"
+                    [rowsPerPageOptions]="[5, 10, 20]"
+                    [rows]="5"
+                    [tableStyle]="{ 'min-width': '50rem' }"
+                    [value]="reviewProcess()"
+            >
+                <ng-template #header>
+                    <tr>
+                        <th style="width:25%">更新時間</th>
+                        <th style="width:25%">set By</th>
+                        <th style="width:25%">欄位</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-customer>
+                    <tr>
+                        <td>{{ customer.reviewTime }}</td>
+                        <td>{{ customer.reviewedBy }}</td>
+                        <td>{{ customer.columnName }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>
+
