@@ -100,16 +100,15 @@
             </div>
         </div>
     </div>
-    <app-speakers-list></app-speakers-list>
 </div>
 
 <app-common-dialog
         [header]="'編輯 ' + currentOperationModeTitle()"
         [needTopSpace]="true"
 >
-    @if (operationMode()==="exhibition-theme") {
-        <app-exhibition-theme />
-    } @else if (operationMode()==="exhibition-highlights") {
-        <app-exhibition-highlights />
+    @if (operationMode() === "exhibition-theme") {
+        <app-exhibition-theme/>
+    } @else if (operationMode() === "exhibition-highlights") {
+        <app-exhibition-highlights/>
     }
 </app-common-dialog>
