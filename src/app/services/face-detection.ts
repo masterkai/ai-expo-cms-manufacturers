@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FaceDetector, FilesetResolver } from "@mediapipe/tasks-vision";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class FaceDetection {
-  private detector: FaceDetector | null = null;
+	private detector: FaceDetector | null = null;
 
 	async init() {
 		if (this.detector) return;
@@ -30,6 +30,6 @@ export class FaceDetection {
 	async detect(image: HTMLCanvasElement): Promise<any> {
 		if (!this.detector) await this.init();
 		if (!this.detector) return null;
-		return await this.detector.detect(image as any);
+		return this.detector.detect(image as any);
 	}
 }
