@@ -16,23 +16,68 @@
     />
 </div>
 
+
 <app-common-dialog
         [header]="'講者照片上傳'"
-        [needTopSpace]="true"
 >
-    <div class="image-upload-container"><p>規格:JPG/PNGS直式3:4、1200×1600px、檔案5MB;臉部高度占畫面30一60%,頭部落在頭型標線內</p>
-        <div class="stage-container">
-            <div #stageContainer class="stage"></div>
+    <div class="image-upload-container"><p>
+        <div class="screen-block">
+            <div class="desc">規格:JPG/PNGS直式3:4、1200×1600px、檔案5MB;臉部高度占畫面30一60%,頭部落在頭型標線內</div>
+            <div class="stage-container">
+                <div #stageContainer class="stage"></div>
+            </div>
         </div>
 
         @if (imageLoaded()) {
-            <div class="controls">
-                <button (click)="zoom(1.1)">Zoom +</button>
-                <button (click)="zoom(0.9)">Zoom -</button>
-                <button (click)="resetToFaceCenter()">Reset</button>
-                <button (click)="exportCropped()">Export</button>
-                <button (click)="rotate(90)">Rotate 90°</button>
-                <button (click)="rotate(-90)">Rotate -90°</button>
+            <div class="ui-block">
+                <div class="slider-group">
+                    <!-- src/app/shared/face-auto-cropper/face-auto-cropper.html -->
+                    <div>
+                        <label>旋轉角度:  {{ rotation() }}</label>
+                        <p-slider
+                                (onChange)="onRotationChange($event.value)"
+                                [(ngModel)]="rotation"
+                                [max]="359"
+                                [min]="0"
+                                [step]="1">
+
+                        </p-slider>
+                    </div>
+                    <div>
+                        <label>縮放比例: {{ imgScale | number:'1.2-2' }}</label>
+                        <p-slider
+                                (onChange)="onScaleChange($event.value)"
+                                [(ngModel)]="imgScale"
+                                [max]="3" [min]="0.1"
+                                [step]="0.01">
+
+                        </p-slider>
+                    </div>
+                </div>
+                <div class="controls">
+                    <div class="w-[50%]">
+                        <p-button
+                                (click)="resetToFaceCenter()"
+                                fluid
+                                label="重製"
+                                variant="outlined"
+                        />
+                    </div>
+                    <div class="w-[50%]">
+                        <p-button (click)="exportCropped()" fluid label="自動裁切" variant="outlined"/>
+                    </div>
+                </div>
+                <div>檢核清單</div>
+                <ul>
+                    <li><i class="pi pi-check-circle"></i>file-download works!</li>
+                    <li><i class="pi pi-check-circle"></i>file-download works!</li>
+                    <li><i class="pi pi-times-circle"></i>file-download works!</li>
+                </ul>
+                <p-tag severity="info" value="提示:請將臉部放進虛線範圍"/>
+                <div class="w-[100%]">
+                    <p-button fluid label="上傳" severity="secondary"/>
+                </div>
             </div>
-        }</div>
+        }
+    </div>
 </app-common-dialog>

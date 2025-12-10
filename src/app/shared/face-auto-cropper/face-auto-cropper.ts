@@ -3,12 +3,22 @@ import Konva from "konva";
 import { FaceDetection } from "../../services/face-detection";
 import { HttpClient } from "@angular/common/http";
 import { CommonDialog } from "../common-dialog/common-dialog";
+import { Slider } from "primeng/slider";
+import { DecimalPipe } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Button } from "primeng/button";
+import { Tag } from "primeng/tag";
 
 @Component({
 	selector: 'app-face-auto-cropper',
 	standalone: true,
 	imports: [
-		CommonDialog
+		CommonDialog,
+		Slider,
+		DecimalPipe,
+		FormsModule,
+		Button,
+		Tag
 	],
 	templateUrl: './face-auto-cropper.html',
 	styleUrl: './face-auto-cropper.scss'
@@ -138,6 +148,12 @@ export class FaceAutoCropper implements AfterViewInit {
 			draggable: true,
 		});
 
+		// 設定 offset 為圖片中心
+		this.konvaImg.offset({
+			x: this.image.naturalWidth / 2,
+			y: this.image.naturalHeight / 2,
+		});
+
 
 		this.layer.add(this.konvaImg);
 		this.layer.draw();
@@ -175,7 +191,8 @@ export class FaceAutoCropper implements AfterViewInit {
 
 	applyTransform() {
 		this.konvaImg.scale({ x: this.imgScale, y: this.imgScale });
-		this.konvaImg.position({ x: this.imgX, y: this.imgY });
+		// 設定 position 為畫布中心
+		this.konvaImg.position({ x: this.stageW / 2, y: this.stageH / 2 });
 		this.layer.draw();
 	}
 
@@ -194,7 +211,7 @@ export class FaceAutoCropper implements AfterViewInit {
 	exportCropped() {
 		const dataUrl = this.stage.toCanvas().toDataURL('image/png');
 		const win = window.open();
-		win!.document.write(`<img src="${ dataUrl }"  alt="img"/>`);
+		win!.document.write(`<img src="${dataUrl}"  alt="img"/>`);
 	}
 
 	async exportToBlob(): Promise<Blob> {
@@ -205,7 +222,7 @@ export class FaceAutoCropper implements AfterViewInit {
 
 	async exportToFile(): Promise<File> {
 		const blob = await this.exportToBlob();
-		return new File([ blob ], 'cropped.png', { type: 'image/png' });
+		return new File([blob], 'cropped.png', { type: 'image/png' });
 	}
 
 	async onUpload() {
@@ -216,5 +233,18 @@ export class FaceAutoCropper implements AfterViewInit {
 
 		// HTTP upload
 		this.http.post('/api/upload', form).subscribe();
+	}
+
+	protected onRotationChange(value: number | undefined) {
+		if (value === undefined) return;
+		this.rotation.set(value);
+		this.konvaImg.rotation(value);
+		this.layer.draw();
+	}
+
+	protected onScaleChange(value: number | undefined) {
+		if (value === undefined) return;
+		this.imgScale = value;
+		this.applyTransform();
 	}
 }
