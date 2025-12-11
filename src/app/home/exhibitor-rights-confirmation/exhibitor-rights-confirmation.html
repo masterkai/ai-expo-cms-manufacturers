@@ -1,5 +1,5 @@
 <app-title [titleValue]="'參展資訊'"/>
-<p-tag severity="info" value="以下三區為只讀，由業務預先建立；自家說明可編輯" />
+<p-tag severity="info" value="以下三區為只讀，由業務預先建立；自家說明可編輯"/>
 
 <div class="wrapper">
     @for (item of data; track item.itemName) {
@@ -28,12 +28,24 @@
         [header]="''"
         [needTopSpace]="true"
 >
-    <div class="w-[500px] flex flex-col gap-4 justify-center item-center">
+    <div class="w-[700px] flex flex-col gap-4 justify-center item-center">
         @for (item of data; track item.itemName) {
-            <div class="flex items-center">
+            <div class="flex items-center gap-4 w-[100%]">
                 <p-checkbox [(ngModel)]="selectedItemName" [inputId]="item.itemName" [value]="item.itemName"
                             name="group"/>
-                <label [for]="item.itemName" class="ml-2"> {{ item.itemName }} </label>
+                <label [for]="item.itemName" class="ml-2 flex-2 basis-[140px]"> {{ item.itemName }} </label>
+                <div class="w-[100%]">
+                    <p-floatlabel variant="on">
+                        <input
+                                [(ngModel)]="item.change_description"
+                                autocomplete="off"
+                                fluid
+                                id="on_label"
+                                pInputText
+                        />
+                        <label for="on_label">異動描述</label>
+                    </p-floatlabel>
+                </div>
             </div>
 
         }

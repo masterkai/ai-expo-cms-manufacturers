@@ -1,9 +1,12 @@
 .wrapper {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 12px;
 	
 	.item {
+		flex: 1 1 45%;
+		
 		span {
 			display: inline-block;
 			width: auto;
@@ -13,6 +16,7 @@
 			border: 1px solid #d9d9d9;
 		}
 		
+		cursor: pointer;
 		padding: 8px 12px;
 		background: #f5f5f5;
 		border-radius: 4px;
