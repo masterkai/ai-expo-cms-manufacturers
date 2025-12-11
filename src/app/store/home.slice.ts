@@ -21,6 +21,22 @@ export interface Confirmation_of_exhibitor_right {
 	change_description?: string;
 }
 
+export interface Exhibition_Information_Update {
+	speaker_photo: Blob;
+	logo_image: Blob;
+	speech_manuscript: Blob;
+	briefing: Blob;
+	highlights: { highlight: string; detail: string }[];
+	exhibition_theme: string;
+}
+
+export interface Speaker_information {
+	name: string;
+	title: string;
+	biography: string;
+	updated_at: string;
+}
+
 export interface HomeSlice {
 	data_completeness: number;
 	last_updated: string | null;
@@ -30,4 +46,8 @@ export interface HomeSlice {
 	contact_person: Contact_person;
 	confirmation_of_exhibitor_rights: Confirmation_of_exhibitor_right[];
 	selected_change_requests: string[];
+	exhibition_Information_Update: Exhibition_Information_Update;
+	speaker_information: Speaker_information[];
+
+
 }
