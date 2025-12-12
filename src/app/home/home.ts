@@ -1,4 +1,4 @@
-import { Component, signal, viewChild } from '@angular/core';
+import { Component, inject, signal, viewChild } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -10,6 +10,8 @@ import { DeadLinePanel } from "../shared/dead-line-panel/dead-line-panel";
 import { CommonDialog } from "../shared/common-dialog/common-dialog";
 import { ModifyReviewProcessRecord } from "./modify-review-process-record/modify-review-process-record";
 import { Drawer } from "primeng/drawer";
+import { HomeStore } from "../store/home.store";
+import { Steps_Chinese } from "../store/home.slice";
 
 @Component({
 	selector: 'app-home',
@@ -18,6 +20,8 @@ import { Drawer } from "primeng/drawer";
 	styleUrl: './home.scss'
 })
 export class Home {
+	steps_chinese = Steps_Chinese
+	readonly homeStore = inject(HomeStore)
 	dialog = viewChild(CommonDialog)
 	protected visible = signal(false)
 

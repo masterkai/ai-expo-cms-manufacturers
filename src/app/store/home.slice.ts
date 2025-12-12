@@ -108,5 +108,5 @@ export const initialHomeSlice: HomeSlice = {
 	},
 	speaker_information: [],
 	proceed_to_next_step: false,
-	proceed_to_next_step_message: Steps.CONTACT_PERSON
+	proceed_to_next_step_message: Steps_Chinese.CONTACT_PERSON
 };
