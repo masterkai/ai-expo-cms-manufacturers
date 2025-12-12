@@ -13,6 +13,7 @@ import { ExhibitorInformationUpdate } from "./home/exhibitor-information-update/
 import { FileDownload } from "./home/file-download/file-download";
 import { ReviewAndCheckPreviewList } from "./home/review-and-check-preview-list/review-and-check-preview-list";
 import { SpeakerInfo } from "./home/speaker-info/speaker-info";
+import { loginGuard } from "./guard/login-guard";
 
 export const routes: Routes = [
 	{ path: 'login', canActivate: [commonGuard], component: Login },
@@ -21,7 +22,9 @@ export const routes: Routes = [
 	{ path: 'forgot-password', canActivate: [commonGuard], component: ForgotPassword },
 	{ path: 'reset-password', canActivate: [commonGuard], component: ResetPassword },
 	{
-		path: '', component: Home,
+		path: '',
+		canActivate: [loginGuard],
+		component: Home,
 		children: [
 			{ path: '', redirectTo: 'basic-info', pathMatch: 'full' },
 			{ path: 'basic-info', component: BasicInformation },
