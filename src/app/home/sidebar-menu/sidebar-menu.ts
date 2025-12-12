@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { Ripple } from "primeng/ripple";
-import { Steps_Chinese } from "../../store/home.slice";
-import { Steps } from "primeng/steps";
+import { Steps, Steps_Chinese } from "../../store/home.slice";
+
+import { HomeStore } from "../../store/home.store";
 
 @Component({
 	selector: 'app-sidebar-menu',
@@ -15,6 +16,7 @@ import { Steps } from "primeng/steps";
 	styleUrl: './sidebar-menu.scss'
 })
 export class SidebarMenu {
+	readonly homeStore = inject(HomeStore)
 	steps = Steps
 	steps_Chinese = Steps_Chinese;
 	protected readonly Steps_Chinese = Steps_Chinese;

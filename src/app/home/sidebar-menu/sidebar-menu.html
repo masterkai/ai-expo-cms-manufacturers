@@ -4,22 +4,38 @@
             <div class="circle">1</div>
             {{ Steps_Chinese.BASIC_INFO }}</a>
     </li>
-    <li class="menu-item" pRipple>
-        <a routerLink="/contact-person" routerLinkActive="active-link">
+    <li
+
+            class="menu-item"
+            pRipple
+    >
+        <a
+                (click)="homeStore.setNextStepURL(steps.EXHIBITOR_RIGHTS_CONFIRMATION);
+            homeStore.setNextStep(Steps_Chinese.EXHIBITOR_RIGHTS_CONFIRMATION)"
+                routerLink="/contact-person" routerLinkActive="active-link">
             <div class="circle">2</div>
             {{ Steps_Chinese.CONTACT_PERSON }}</a>
     </li>
-    <li class="menu-item" pRipple>
+    <li
+            (click)="homeStore.setNextStepURL(steps.EXHIBITOR_INFORMATION_UPDATE)" class="menu-item"
+            pRipple
+    >
         <a routerLink="exhibitor-rights-confirmation" routerLinkActive="active-link">
             <div class="circle">3</div>
             {{ Steps_Chinese.EXHIBITOR_RIGHTS_CONFIRMATION }}</a>
     </li>
-    <li class="menu-item" pRipple>
+    <li
+            (click)="homeStore.setNextStepURL(steps.SPEAKER_INFO)" class="menu-item"
+            pRipple
+    >
         <a routerLink="exhibitor-information-update" routerLinkActive="active-link">
             <div class="circle">4</div>
             {{ Steps_Chinese.EXHIBITOR_INFORMATION_UPDATE }}</a>
     </li>
-    <li class="menu-item" pRipple>
+    <li
+            (click)="homeStore.setNextStepURL(steps.REVIEW_AND_CHECK_PREVIEW_LIST)" class="menu-item"
+            pRipple
+    >
         <a routerLink="speaker-info" routerLinkActive="active-link">
             <div class="circle">5</div>
             {{ Steps_Chinese.SPEAKER_INFO }}（姓名/簡介）</a>
