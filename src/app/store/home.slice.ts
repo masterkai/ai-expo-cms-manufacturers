@@ -30,6 +30,8 @@ export interface Exhibition_Information_Update {
 	exhibition_theme: string;
 }
 
+export type Review_Status = 'DRAFT' | 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
+
 export interface Speaker_information {
 	name: string;
 	title: string;
@@ -38,9 +40,10 @@ export interface Speaker_information {
 }
 
 export interface HomeSlice {
+	countdown_to_submission_deadline: string;
 	data_completeness: number;
 	last_updated: string | null;
-	review_status: 'DRAFT' | 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
+	review_status: Review_Status;
 	company_unified_business_no: string | null;
 	basic_info: Basic_info;
 	contact_person: Contact_person;
