@@ -2,30 +2,36 @@
     <li class="menu-item" pRipple>
         <a routerLink="/basic-info" routerLinkActive="active-link">
             <div class="circle">1</div>
-            基本資料</a>
+            {{ Steps_Chinese.BASIC_INFO }}</a>
     </li>
     <li class="menu-item" pRipple>
         <a routerLink="/contact-person" routerLinkActive="active-link">
             <div class="circle">2</div>
-            聯絡人</a>
+            {{ Steps_Chinese.CONTACT_PERSON }}</a>
     </li>
     <li class="menu-item" pRipple>
         <a routerLink="exhibitor-rights-confirmation" routerLinkActive="active-link">
             <div class="circle">3</div>
-            參展權益確認</a>
+            {{ Steps_Chinese.EXHIBITOR_RIGHTS_CONFIRMATION }}</a>
     </li>
     <li class="menu-item" pRipple>
         <a routerLink="exhibitor-information-update" routerLinkActive="active-link">
             <div class="circle">4</div>
-            參展資料更新</a>
+            {{ Steps_Chinese.EXHIBITOR_INFORMATION_UPDATE }}</a>
     </li>
     <li class="menu-item" pRipple>
         <a routerLink="speaker-info" routerLinkActive="active-link">
             <div class="circle">5</div>
-            講者資訊（姓名/簡介）</a>
+            {{ Steps_Chinese.SPEAKER_INFO }}（姓名/簡介）</a>
     </li>
     <li class="menu-item" pRipple><a routerLink="review-and-check-preview-list"
-                                     routerLinkActive="active-link">審核檢查預覽列表</a>
+                                     routerLinkActive="active-link">
+        {{ Steps_Chinese.REVIEW_AND_CHECK_PREVIEW_LIST }}
+    </a>
     </li>
-    <li class="menu-item" pRipple><a routerLink="file-download" routerLinkActive="active-link">文件下載</a></li>
+    <li class="menu-item" pRipple>
+        <a routerLink="file-download" routerLinkActive="active-link">
+            {{ Steps_Chinese.FILE_DOWNLOAD }}
+        </a>
+    </li>
 </ul>
