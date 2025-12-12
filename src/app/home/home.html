@@ -24,7 +24,12 @@
             <div class="main-content">
                 <router-outlet></router-outlet>
                 <div class="button-block">
-                    <p-button label="前往下一步({{ homeStore.getNextStep() }})" severity="contrast" variant="outlined"/>
+                    <p-button
+                            label="前往下一步({{ homeStore.getNextStep() }})"
+                            routerLink="{{homeStore.getNextStepURL()}}"
+                            severity="contrast"
+                            variant="outlined"
+                    />
                 </div>
             </div>
         </div>

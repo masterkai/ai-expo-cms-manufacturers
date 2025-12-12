@@ -49,6 +49,16 @@ export enum Steps {
 	'REVIEW_AND_CHECK_PREVIEW_LIST' = 'review_and_check_preview_list'
 }
 
+export enum Steps_URL {
+	'BASIC_INFO' = 'basic-info',
+	'CONTACT_PERSON' = 'contact-person',
+	'EXHIBITOR_RIGHTS_CONFIRMATION' = 'exhibitor-rights-confirmation',
+	'EXHIBITOR_INFORMATION_UPDATE' = 'exhibitor-information-update',
+	'SPEAKER_INFO' = 'speaker-info',
+	'FILE_DOWNLOAD' = 'file-download',
+	'REVIEW_AND_CHECK_PREVIEW_LIST' = 'review-and-check-preview-list'
+}
+
 export enum Steps_Chinese {
 	'BASIC_INFO' = '基本資料',
 	'CONTACT_PERSON' = '聯絡人',
@@ -72,6 +82,7 @@ export interface HomeSlice {
 	exhibition_Information_Update: Exhibition_Information_Update;
 	speaker_information: Speaker_information[];
 	proceed_to_next_step: boolean;
+	proceed_to_next_step_url: string;
 	proceed_to_next_step_message: string;
 }
 
@@ -108,5 +119,6 @@ export const initialHomeSlice: HomeSlice = {
 	},
 	speaker_information: [],
 	proceed_to_next_step: false,
+	proceed_to_next_step_url: Steps_URL.CONTACT_PERSON,
 	proceed_to_next_step_message: Steps_Chinese.CONTACT_PERSON
 };

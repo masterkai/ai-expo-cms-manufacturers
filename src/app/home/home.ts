@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBar } from "primeng/progressbar";
 import { Button } from "primeng/button";
-import { RouterOutlet } from "@angular/router";
+import { RouterLink, RouterOutlet } from "@angular/router";
 import { SidebarMenu } from "./sidebar-menu/sidebar-menu";
 import { DeadLinePanel } from "../shared/dead-line-panel/dead-line-panel";
 import { CommonDialog } from "../shared/common-dialog/common-dialog";
@@ -15,7 +15,7 @@ import { Steps_Chinese } from "../store/home.slice";
 
 @Component({
 	selector: 'app-home',
-	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar, Button, RouterOutlet, SidebarMenu, DeadLinePanel, CommonDialog, ModifyReviewProcessRecord, Drawer],
+	imports: [MatSelectModule, FormsModule, SkeletonModule, ProgressBar, Button, RouterOutlet, SidebarMenu, DeadLinePanel, CommonDialog, ModifyReviewProcessRecord, Drawer, RouterLink],
 	templateUrl: './home.html',
 	styleUrl: './home.scss'
 })
