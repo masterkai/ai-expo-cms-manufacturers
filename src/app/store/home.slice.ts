@@ -40,13 +40,13 @@ export interface Speaker_information {
 }
 
 export enum Steps {
-	'BASIC_INFO' = 'basic_info',
-	'CONTACT_PERSON' = 'contact_person',
-	'EXHIBITOR_RIGHTS_CONFIRMATION' = 'exhibitor_rights_confirmation',
-	'EXHIBITOR_INFORMATION_UPDATE' = 'exhibitor_information_update',
-	'SPEAKER_INFO' = 'speaker_info',
-	'FILE_DOWNLOAD' = 'file_download',
-	'REVIEW_AND_CHECK_PREVIEW_LIST' = 'review_and_check_preview_list'
+	'BASIC_INFO' = 'basic-info',
+	'CONTACT_PERSON' = 'contact-person',
+	'EXHIBITOR_RIGHTS_CONFIRMATION' = 'exhibitor-rights-confirmation',
+	'EXHIBITOR_INFORMATION_UPDATE' = 'exhibitor-information-update',
+	'SPEAKER_INFO' = 'speaker-info',
+	'FILE_DOWNLOAD' = 'file-download',
+	'REVIEW_AND_CHECK_PREVIEW_LIST' = 'review-and-check-preview-list'
 }
 
 export enum Steps_URL {

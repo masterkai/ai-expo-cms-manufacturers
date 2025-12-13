@@ -25,9 +25,9 @@
                 <router-outlet></router-outlet>
                 <div class="button-block">
                     <p-button
-                            label="前往下一步({{ homeStore.getNextStep() }})"
-                            routerLink="{{homeStore.getNextStepURL()}}"
-                            severity="contrast"
+                            (onClick)="goNext()"
+                            [label]="homeStore.getNextStep() ? '前往（' + homeStore.getNextStep() + '）': '提交審核'"
+                            severity="primary"
                             variant="outlined"
                     />
                 </div>
