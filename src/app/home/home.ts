@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBar } from "primeng/progressbar";
 import { Button } from "primeng/button";
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from "@angular/router";
 import { SidebarMenu } from "./sidebar-menu/sidebar-menu";
 import { DeadLinePanel } from "../shared/dead-line-panel/dead-line-panel";
 import { CommonDialog } from "../shared/common-dialog/common-dialog";
@@ -12,6 +12,7 @@ import { ModifyReviewProcessRecord } from "./modify-review-process-record/modify
 import { Drawer } from "primeng/drawer";
 import { HomeStore } from "../store/home.store";
 import { Steps_Chinese } from "../store/home.slice";
+import { filter } from "rxjs";
 
 @Component({
 	selector: 'app-home',
@@ -20,10 +21,19 @@ import { Steps_Chinese } from "../store/home.slice";
 	styleUrl: './home.scss'
 })
 export class Home {
+	_currentRoute = inject(Router)
 	steps_chinese = Steps_Chinese
 	readonly homeStore = inject(HomeStore)
 	dialog = viewChild(CommonDialog)
 	protected visible = signal(false)
+
+	constructor() {
+		this._currentRoute.events
+			.pipe(filter(event => event instanceof NavigationEnd))
+			.subscribe(event => {
+				console.log('路由變更：', (event as NavigationEnd).urlAfterRedirects);
+			});
+	}
 
 	protected toggleModifyReviewProcessRecordDialog() {
 		this.visible.update(prev => !prev);
